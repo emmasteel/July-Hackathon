@@ -6,10 +6,8 @@ Pre-populated backlog for the accessible grant eligibility checker. Sized so you
 **2–3** during the event; leave the rest as backlog. Use the
 [story-to-spec prompt](../../.github/prompts/story-to-spec.prompt.md) to turn these into a spec.
 
-Story 1 is **already implemented** in the starter skeleton — use it to learn the flow, then
-build Story 2 onward with Copilot.
-
-〔**TODO — organiser:** confirm these stories match the agreed Team 2 use case.〕
+Stories 1 through 3 are **already implemented** in the starter skeleton — use them to learn the flow, then
+build Story 4 onward with Copilot.
 
 ---
 
