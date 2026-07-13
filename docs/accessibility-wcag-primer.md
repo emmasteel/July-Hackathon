@@ -1,3 +1,5 @@
+[← Back to home](../index.html)
+
 # Accessibility primer — WCAG 2.2 AA (plain English)
 
 You don't need to memorise the standard. This primer gives you the essentials, a checklist, and

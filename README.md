@@ -4,11 +4,11 @@ A half-day, hands-on hackathon that teaches teams to build a public-facing gover
 feature **with GitHub Copilot** — from user stories to spec, code, tests, automation,
 security, and accessibility.
 
-> **Event:** GitHub Copilot Hackathon
-> **When:** Wednesday 22 July 2026, 09:00–14:00 AEST (content 09:30–13:00, lunch after)
-> **Where:** 〔TODO: confirm venue / room / remote joining details〕
-> **Facilitator:** Emma Steel — Solution Engineer, Microsoft (emma.steel@microsoft.com)
-> **Audience:** ~12 participants, 2 teams of 6 (developers, business analysts, testers,
+> **Event:** GitHub Copilot Hackathon <br />
+> **When:** Wednesday 22 July 2026, 09:00–14:00 AEST (content 09:30–13:00, lunch after) <br />
+> **Where:** Microsoft Canberra | Lv 4, 6 National Cct <br />
+> **Facilitator:** [Emma Steel — Solution Engineer, Microsoft](mailto:emma.steel@microsoft.com) <br />
+> **Audience:** ~12 participants, 2 teams of 6 (developers, business analysts, testers, <br />
 > cybersecurity specialists — mixed coding confidence)
 
 ---
@@ -16,17 +16,11 @@ security, and accessibility.
 ## Why this repo exists
 
 Every objective here is framed as *doing the task **with** Copilot*, not just finishing the
-task. You will learn to **prompt, review, and refine** Copilot output — a skill that applies
+task. You will learn to **prompt, review, and refine** Copilot output - a skill that applies
 whether you write code, user stories, test plans, or security reviews.
 
 This repository is **public** and safe to clone before the event. There are **no secrets,
 credentials, or customer data** in it. Please keep it that way (see [SECURITY.md](SECURITY.md)). 🔒
-
-> **📄 Hosted landing page:** [index.html](index.html) is a ready-to-publish GitHub Pages page.
-> To turn it on: **Settings → Pages → Deploy from a branch → `main` / root**. GitHub Pages
-> (Jekyll, configured in [_config.yml](_config.yml)) serves the landing page and renders every
-> Markdown doc with a theme. 〔TODO — organiser: set the repo URL in `index.html` and the
-> title/URL in `_config.yml`.〕
 
 ---
 
@@ -65,7 +59,7 @@ only the use case differs.
 | Team | Use case | Track |
 | --- | --- | --- |
 | **Team 1 — ABR** | Accessibility analysis of the Australian Business Register + an accessible ABN lookup feature | [teams/team-1-abr/](teams/team-1-abr/) |
-| **Team 2 — Grant Finder** 〔suggested〕 | An accessible business.gov.au grants / eligibility checker | [teams/team-2-grant-finder/](teams/team-2-grant-finder/) |
+| **Team 2 — Grant Finder** | An accessible business.gov.au grants / eligibility checker | [teams/team-2-grant-finder/](teams/team-2-grant-finder/) |
 
 ---
 

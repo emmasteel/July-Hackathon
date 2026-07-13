@@ -1,3 +1,5 @@
+[← Back to home](../../index.html)
+
 # Team 2 — Grant Finder / eligibility checker 〔suggested use case — confirm with your team〕
 
 **Use case:** Small businesses struggle to find grants they qualify for on

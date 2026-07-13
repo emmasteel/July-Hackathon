@@ -1,3 +1,5 @@
+[← Back to home](../../index.html)
+
 # Team 2 — user stories (Grant Finder)
 
 Pre-populated backlog for the accessible grant eligibility checker. Sized so you can build

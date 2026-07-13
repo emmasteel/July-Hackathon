@@ -1,3 +1,5 @@
+[← Back to home](index.html)
+
 # Agenda — GitHub Copilot Hackathon
 
 **Wednesday 22 July 2026 · 09:00–14:00 AEST**

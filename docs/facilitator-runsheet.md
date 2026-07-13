@@ -1,3 +1,5 @@
+[← Back to home](../index.html)
+
 # Facilitator run sheet — GitHub Copilot Hackathon
 
 **Wednesday 22 July 2026 · 09:00–13:00 AEST (lunch at 13:00)**

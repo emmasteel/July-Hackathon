@@ -1,3 +1,5 @@
+[← Back to home](index.html)
+
 # Prerequisites — complete BEFORE 22 July
 
 This is a **bring-your-own-device (BYOD)** event. Please arrive fully set up so we can spend

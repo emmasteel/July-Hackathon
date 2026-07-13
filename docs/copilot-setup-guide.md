@@ -1,3 +1,5 @@
+[← Back to home](../index.html)
+
 # Copilot setup guide
 
 A step-by-step guide to getting GitHub Copilot working in your IDE and verifying it. If you

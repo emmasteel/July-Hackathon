@@ -1,3 +1,5 @@
+[← Back to home](../index.html)
+
 # Glossary
 
 Plain-English definitions for everyone — especially BAs, testers, and security specialists new
