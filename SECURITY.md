@@ -8,7 +8,7 @@ This repository is **public** and used for a hands-on hackathon. Treat it accord
    passwords, certificates, or any `.env` file with real values. Use `.env.example` with
    placeholder values only. The [.gitignore](.gitignore) blocks common secret files, but the
    ultimate responsibility is yours.
-2. **No customer data.** Do not add real business data, personal information, internal
+2. **No real data.** Do not add real business data, personal information, internal
    documents, or anything sensitive. Use only the provided fixtures and sample data.
 3. **Do not hit live government sites in automated tests.** Team 1's use case references the
    Australian Business Register, but tests must use the **static fixtures** provided in
@@ -26,13 +26,7 @@ This repository is **public** and used for a hands-on hackathon. Treat it accord
 ## Reporting a vulnerability
 
 If you find a security issue in this repository (not in the exercises themselves), please
-report it privately rather than opening a public issue:
-
-- 〔**TODO — organiser:** add a private contact, e.g. a security email or GitHub private
-  vulnerability reporting. Enable **Private vulnerability reporting** in the repo's
-  *Settings → Security* so reporters can reach you without disclosing publicly.〕
-
-We aim to acknowledge reports within 〔**TODO: set an SLA, e.g. 5 business days**〕.
+report it privately rather than opening a public issue.
 
 ## Supported scope
 

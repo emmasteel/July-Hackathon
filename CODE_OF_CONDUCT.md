@@ -34,8 +34,6 @@ If you experience or witness unacceptable behaviour, please contact a facilitato
 event, or reach out privately to:
 
 - **Event contact:** Emma Steel — Solution Engineer, Microsoft (emma.steel@microsoft.com)
-- 〔**TODO — organiser:** add a backup contact so reports can
-  reach someone other than the person who might be involved.〕
 
 All reports will be handled discreetly and taken seriously.
 

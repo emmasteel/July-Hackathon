@@ -7,7 +7,7 @@ Use this to record WCAG 2.2 AA findings for the grant finder. See the
 criteria references. This supports stretch goal **S2**.
 
 Analyse:
-1. Your own app (run `npm run test:e2e` for the axe-core check + do a keyboard walkthrough).
+1. Your own app (run `npm run test:e2e` for the Playwright accessibility checks + do a keyboard walkthrough).
 2. *(Optional, observation only)* a real grants page on business.gov.au in a browser — do
    **not** automate against it.
 
@@ -41,12 +41,12 @@ Analyse:
 - [ ] Each invalid field is marked `aria-invalid` and links its message via `aria-describedby`.
 - [ ] Eligible vs ineligible is clear in **text**, not colour alone.
 
-## Automated check (axe-core)
+## Automated check (Playwright)
 
-- [ ] `npm run test:e2e` passes with **zero** axe violations.
-- [ ] If any violation appears, record it above and fix it.
+- [ ] `npm run test:e2e` passes, including the accessibility assertions.
+- [ ] If any check fails, record the issue above and fix it.
 
 ## Reflection (for the show-and-tell)
 
 - Which issue did **Copilot** help you find or fix? _______________________________________
-- Which issue needed a **human** (not caught by axe)? ____________________________________
+- Which issue needed a **human** (not caught by the automated checks)? ____________________________________

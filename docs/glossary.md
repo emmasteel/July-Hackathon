@@ -8,7 +8,7 @@ to the developer tooling. If a term in the repo is unclear, it's probably here.
 ## GitHub Copilot & AI tooling
 
 - **GitHub Copilot** — an AI pair-programmer that suggests code and answers questions inside
-  your IDE. You stay in control: you review, edit, or reject its suggestions.
+  your IDE. You stay in control: you review, edit, or reject its suggestions. We may sometimes refer to it as "Copilot".
 - **Copilot Chat** — a chat panel in your IDE where you can ask Copilot questions, get
   explanations, and generate code or tests.
 - **Inline suggestion / ghost text** — the grey text Copilot proposes as you type. Press `Tab`
@@ -46,7 +46,6 @@ to the developer tooling. If a term in the repo is unclear, it's probably here.
   bugs.
 - **Fixture** — static sample data used by tests so they're fast and don't depend on live
   systems. (We use fixtures instead of hitting real government sites.)
-- **axe-core** — a tool that automatically checks a web page for many accessibility problems.
 
 ## Security
 
@@ -78,6 +77,8 @@ to the developer tooling. If a term in the repo is unclear, it's probably here.
 - **CI/CD pipeline** — the automated workflow that builds, tests, scans (and optionally
   deploys) your app. We use **GitHub Actions**.
 - **GitHub Actions** — GitHub's automation system; workflows are defined in `.github/workflows/`.
+- **IDE (Integrated Development Environment)** — a code editor with extra features (e.g. GitHub
+  Copilot, debugging, Git integration). We recommend **Visual Studio Code**.
 - **Repository (repo)** — the project's folder of code and docs tracked by **git**.
 - **Commit** — a saved snapshot of changes, with a message describing them.
 - **Pull request (PR)** — a proposed set of changes for review before merging.

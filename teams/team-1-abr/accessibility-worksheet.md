@@ -9,7 +9,7 @@ criteria references. This supports stretch goal **S2**.
 Analyse three things:
 1. The provided fixture [`fixtures/abr-sample-results.html`](fixtures/abr-sample-results.html)
    (it has planted issues).
-2. Your own app (run `npm run test:e2e` for the axe-core check + do a keyboard walkthrough).
+2. Your own app (run `npm run test:e2e` for the Playwright accessibility checks + do a keyboard walkthrough).
 3. *(Optional, observation only)* the live ABR in a browser — do **not** automate against it.
 
 ---
@@ -40,12 +40,12 @@ Analyse three things:
 - [ ] After submitting, the result/error is announced (screen reader or expectation noted).
 - [ ] I can Tab through results without getting trapped.
 
-## Automated check (axe-core)
+## Automated check (Playwright)
 
-- [ ] `npm run test:e2e` passes with **zero** axe violations.
-- [ ] If any violation appears, record it above and fix it.
+- [ ] `npm run test:e2e` passes, including the accessibility assertions.
+- [ ] If any check fails, record the issue above and fix it.
 
 ## Reflection (for the show-and-tell)
 
 - Which issue did **Copilot** help you find or fix? _______________________________________
-- Which issue needed a **human** (not caught by axe)? ____________________________________
+- Which issue needed a **human** (not caught by the automated checks)? ____________________________________

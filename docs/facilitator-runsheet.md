@@ -18,12 +18,11 @@ This is your minute-by-minute guide with talking points, checkpoints, live-demo 
       [PREREQUISITES.md](../PREREQUISITES.md) reflects it.
 - [ ] Do a full dry run: clone → `npm install` → `npm run verify` → `npm run dev` in **both**
       team tracks on a clean machine.
-- [ ] Decide the git workflow (fork / branch / local-only) and note it in
-      [CONTRIBUTING.md](../CONTRIBUTING.md).
 - [ ] Prepare the room: power, screen/projector, guest Wi-Fi, whiteboard, two team tables.
 - [ ] Print or pin: the agenda, the objectives, and each team's use case.
 - [ ] Assign a facilitator/floater to each team (ideally one who can pair on code).
 - [ ] Have a fallback: a phone hotspot and a couple of spare laptops with the stack installed.
+- [ ] Order Morning Tea (Mornos) for 10:15–10:30.
 
 ---
 
@@ -59,7 +58,25 @@ This is your minute-by-minute guide with talking points, checkpoints, live-demo 
 
 ---
 
-## 09:45–10:15 · C1 — Repo & Copilot setup
+## 09:45–10:15 · Presentation — Coding practices in a world with AI
+
+**Format:** a 30-minute talk to set the scene before hands-on work.
+
+**Talking points:**
+- How AI changes the way we write, review, and ship code — and what stays the same.
+- Prompting, reviewing, and refining as core skills for **every** role.
+- Guardrails: treat AI output as a draft — verify, test, and own what you ship.
+- Preview the day: the core spine (C1–C5) puts these practices into action.
+
+---
+
+## 10:15–10:30 · Morning tea
+
+Grab a coffee/chai; help anyone still closing setup gaps before hands-on work starts.
+
+---
+
+## 10:30–10:55 · C1 — Repo & Copilot setup
 
 **Goal:** each team has a customised `copilot-instructions.md` and uses a prompt file.
 
@@ -78,7 +95,7 @@ the `story-to-spec` prompt once.
 
 ---
 
-## 10:15–11:00 · C2 → C3 — Stories to spec, start building
+## 10:55–11:20 · C2 → C3 — Stories to spec, start building
 
 **Goal:** a `spec.md` covering ≥2 stories; core feature scaffolding underway.
 
@@ -97,7 +114,7 @@ skeleton; they extend it rather than start blank.
 
 ---
 
-## 11:00–11:45 · C3 cont. + C4 — Unit testing
+## 11:20–12:00 · C3 cont. + C4 — Unit testing
 
 **Goal:** core feature does something useful; unit tests pass with a real edge case added.
 
@@ -116,7 +133,7 @@ with one function.
 
 ---
 
-## 11:45–12:20 · C5 — Test automation
+## 12:00–12:30 · C5 — Test automation
 
 **Goal:** an automated e2e/regression check runs against fixtures.
 
@@ -132,7 +149,7 @@ it at their new UI elements.
 
 ---
 
-## 12:20–12:50 · Stretch goals (pick any)
+## 12:30–12:50 · Stretch goals (pick any)
 
 **Goal:** try one or more independent goals. No goal blocks another.
 
@@ -140,7 +157,7 @@ Circulate and nudge based on team strengths:
 - **Security folks → S1**: run the [security-review prompt](../.github/prompts/security-review.prompt.md),
   fix one finding, uncomment a scan job in [ci.yml](../.github/workflows/ci.yml).
 - **Testers → S2**: run the [a11y-review prompt](../.github/prompts/a11y-review.prompt.md) and
-  the axe-core check.
+  the Playwright accessibility checks.
 - **Developers → S3**: extend the CI workflow.
 - **BAs/writers → S4**: update README + write an ADR.
 - **Anyone → S5**: refactor [../samples/legacy-snippet/](../samples/legacy-snippet/).

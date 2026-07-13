@@ -28,5 +28,5 @@ Check at least:
 ## Rules
 - Be specific and actionable — no generic "improve accessibility" advice.
 - If something is fine, say so briefly; don't invent problems.
-- End with the **top 3 fixes** to do first, and note which ones the axe-core check will catch
+- End with the **top 3 fixes** to do first, and note which ones the Playwright accessibility checks will catch
   automatically versus which need manual verification.

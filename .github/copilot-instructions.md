@@ -25,8 +25,8 @@ choices in short comments.
 
 - **Language:** TypeScript in `strict` mode. No implicit `any`. Prefer explicit return types
   on exported functions.
-- **Stack:** Vite + React (function components + hooks). Vitest for unit tests, Playwright +
-  axe-core for e2e/accessibility.
+- **Stack:** Vite + React (function components + hooks). Vitest for unit tests, Playwright
+  for e2e/accessibility.
 - **Style:** small, pure functions for logic; keep components thin. Separate **pure logic**
   (e.g. `src/lib/`) from **UI** (`src/components/`) so logic is easy to unit-test.
 - **Naming:** `camelCase` for variables/functions, `PascalCase` for components/types,
@@ -95,7 +95,8 @@ breach WCAG 2.2 AA, and **suggest the accessible alternative**. Specifically:
 - **Target size & spacing:** interactive targets should meet WCAG 2.2's minimum target size.
 
 When you produce UI, **include a short "a11y note"** in your response listing which of the
-above you addressed and any residual risks to verify with the axe-core check.
+above you addressed and any residual risks to verify with the Playwright accessibility checks
+and a keyboard walkthrough.
 
 ## 6. How to help this audience
 

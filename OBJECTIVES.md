@@ -74,10 +74,10 @@ spine is solid.
       **dependency review** via GitHub Actions.
 
 ### S2 — Accessibility-by-default
-**Do:** Get Copilot to flag likely **WCAG 2.2 AA** issues and add an automated axe-core check.
+**Do:** Get Copilot to flag likely **WCAG 2.2 AA** issues and add an automated Playwright accessibility check.
 **Definition of done**
 - [ ] `copilot-instructions.md` contains accessibility rules that made Copilot flag/fix an issue.
-- [ ] An automated **axe-core** check runs against your feature (via Playwright) and passes.
+- [ ] An automated **accessibility** check runs against your feature (via Playwright) and passes.
 - [ ] You captured findings in your team's accessibility worksheet.
 
 ### S3 — CI/CD

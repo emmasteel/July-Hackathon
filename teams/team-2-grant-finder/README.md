@@ -1,14 +1,11 @@
 [← Back to home](../../index.html)
 
-# Team 2 — Grant Finder / eligibility checker 〔suggested use case — confirm with your team〕
+# Team 2 — Grant Finder / eligibility checker
 
 **Use case:** Small businesses struggle to find grants they qualify for on
 [business.gov.au](https://business.gov.au). Your team will build a small, **accessible
 eligibility checker**: a user enters their business profile and gets a list of grants they may
 be eligible for — with a clear explanation of **why** each grant matched or didn't.
-
-> 〔**TODO — organiser:** confirm this is the intended Team 2 use case, or replace it with the
-> agreed one. The starter code and stories are easy to adapt; the objectives don't change.〕
 
 > **Ground rules**
 > - **Never scrape or automate calls to business.gov.au.** Use the static fixtures in
@@ -30,7 +27,7 @@ src/
 tests/
   eligibility.test.ts       starter unit tests (extend in C4)
   GrantFinder.test.tsx      starter component test
-  e2e/grant-finder.spec.ts  Playwright e2e + axe-core check (C5 / S2)
+  e2e/grant-finder.spec.ts  Playwright e2e + accessibility checks (C5 / S2)
 fixtures/
   grants-sample-data.json   sample grants with eligibility rules
 ```

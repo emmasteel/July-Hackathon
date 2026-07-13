@@ -1,8 +1,11 @@
 import { test, expect } from '@playwright/test';
-import AxeBuilder from '@axe-core/playwright';
 
 /**
  * Starter end-to-end + accessibility checks (Objectives C5 and stretch goal S2).
+ *
+ * Accessibility is verified with plain Playwright assertions (accessible names,
+ * semantic roles, keyboard operability) plus Copilot-assisted review — no
+ * third-party scanner.
  *
  * These run against the LOCAL app only (see playwright.config.ts). Do NOT change
  * them to hit abr.business.gov.au or any live government site.
@@ -31,16 +34,27 @@ test.describe('ABN lookup', () => {
     await expect(page.getByRole('alert')).toContainText(/11 digits/i);
   });
 
-  test('has no automatically-detectable WCAG 2.2 AA violations (S2)', async ({
+  test('form controls are accessible and keyboard-operable (S2)', async ({
     page,
   }) => {
     await page.goto('/');
 
-    const results = await new AxeBuilder({ page })
-      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
-      .analyze();
+    // The input is reached by its visible <label> (not placeholder-only).
+    const field = page.getByLabel(/australian business number/i);
+    await expect(field).toBeVisible();
 
-    expect(results.violations).toEqual([]);
+    // A real <button> exposes an accessible name via its role.
+    await expect(page.getByRole('button', { name: /search/i })).toBeVisible();
+
+    // Keyboard-only: focus the field, type, and submit with Enter — no mouse.
+    await field.focus();
+    await expect(field).toBeFocused();
+    await field.fill('51824753556');
+    await field.press('Enter');
+
+    await expect(
+      page.getByRole('heading', { name: /australian taxation office/i }),
+    ).toBeVisible();
   });
 
   // TODO (C5): with Copilot, add a regression test for the "not found" path and

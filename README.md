@@ -7,9 +7,9 @@ security, and accessibility.
 > **Event:** GitHub Copilot Hackathon <br />
 > **When:** Wednesday 22 July 2026, 09:00–14:00 AEST (content 09:30–13:00, lunch after) <br />
 > **Where:** Microsoft Canberra | Lv 4, 6 National Cct <br />
-> **Facilitator:** [Emma Steel — Solution Engineer, Microsoft](mailto:emma.steel@microsoft.com) <br />
+> **Facilitator:** [Emma Steel - Solution Engineer, Microsoft](mailto:emma.steel@microsoft.com) <br />
 > **Audience:** ~12 participants, 2 teams of 6 (developers, business analysts, testers, <br />
-> cybersecurity specialists — mixed coding confidence)
+> cybersecurity specialists)
 
 ---
 
@@ -58,46 +58,41 @@ only the use case differs.
 
 | Team | Use case | Track |
 | --- | --- | --- |
-| **Team 1 — ABR** | Accessibility analysis of the Australian Business Register + an accessible ABN lookup feature | [teams/team-1-abr/](teams/team-1-abr/) |
-| **Team 2 — Grant Finder** | An accessible business.gov.au grants / eligibility checker | [teams/team-2-grant-finder/](teams/team-2-grant-finder/) |
+| **Team 1 - ABR** | Accessibility analysis of the Australian Business Register + an accessible ABN lookup feature | [teams/team-1-abr/](teams/team-1-abr/) |
+| **Team 2 - Grant Finder** | An accessible business.gov.au grants / eligibility checker | [teams/team-2-grant-finder/](teams/team-2-grant-finder/) |
 
 ---
 
 ## Core objectives (the shared spine)
 
-Do these in order — each builds on the last.
+Do these in order - each builds on the last.
 
-1. **C1 — Set up the repo for Copilot** (`copilot-instructions.md`, prompt files, conventions)
-2. **C2 — Stories → spec** (functional + non-functional + acceptance criteria)
-3. **C3 — Build the core feature** from the spec
-4. **C4 — Unit testing** with Copilot (generate, review, strengthen)
-5. **C5 — Test automation** (an end-to-end / regression check)
+1. **C1 - Set up the repo for Copilot** (`copilot-instructions.md`, prompt files, conventions)
+2. **C2 - Stories → spec** (functional + non-functional + acceptance criteria)
+3. **C3 - Build the core feature** from the spec
+4. **C4 - Unit testing** with Copilot (generate, review, strengthen)
+5. **C5 - Test automation** (an end-to-end / regression check)
 
-## Stretch goals (bonus — independent, pick any)
+## Stretch goals (bonus - independent, pick any)
 
-- **S1 — Security-first**: find + fix vulns, wire up scanning (CodeQL / secret scanning / dependency review)
-- **S2 — Accessibility-by-default**: get Copilot to flag likely WCAG 2.2 AA issues + automated axe-core check
-- **S3 — CI/CD**: a GitHub Actions pipeline (build + test + scans)
-- **S4 — Documentation**: README, ADRs, inline docs
-- **S5 — Legacy modernisation**: refactor a small legacy snippet ([samples/legacy-snippet/](samples/legacy-snippet/))
+- **S1 - Security-first**: find + fix vulns, wire up scanning (CodeQL / secret scanning / dependency review)
+- **S2 - Accessibility-by-default**: get Copilot to flag likely WCAG 2.2 AA issues + automated Playwright accessibility check
+- **S3 - CI/CD**: a GitHub Actions pipeline (build + test + scans)
+- **S4 - Documentation**: README, ADRs, inline docs
+- **S5 - Legacy modernisation**: refactor a small legacy snippet ([samples/legacy-snippet/](samples/legacy-snippet/))
 
 Full detail and "definition of done" for each: [OBJECTIVES.md](OBJECTIVES.md)
 
 ---
 
-## Default technology stack 〔confirm with your team〕
+## Default technology stack
 
 The starter apps use a lightweight, widely-approachable web stack so every objective is easy
 to demonstrate:
 
-- **TypeScript + Vite + React** — fast to run, minimal config
-- **Vitest** — unit tests
-- **Playwright + axe-core** — end-to-end + accessibility checks
-
-> 〔**TODO — organiser:** confirm your team's preferred stack — it may be a **.NET / Python /
-> Power Platform** shop. The stack is deliberately swappable — the objectives, prompts, and
-> docs are language-agnostic. If you switch stacks, update the two `teams/*/` skeletons and
-> [PREREQUISITES.md](PREREQUISITES.md).〕
+- **TypeScript + Vite + React** - fast to run, minimal config
+- **Vitest** - unit tests
+- **Playwright** - end-to-end + accessibility checks
 
 ---
 

@@ -51,9 +51,10 @@ New in WCAG 2.2 worth noting: **2.4.11 Focus Not Obscured**, **2.5.8 Target Size
   writes UI.
 - The [a11y-review prompt](../.github/prompts/a11y-review.prompt.md) does a structured review of
   a component and maps issues to SC references.
-- The **axe-core** check (wired through Playwright in each team track) catches many issues
-  **automatically** — but remember axe finds roughly a third to half of issues; the rest need a
-  human (keyboard test, screen-reader spot check, judgement on contrast/meaning).
+- The **Playwright accessibility checks** (in each team track) verify accessible names, roles,
+  and keyboard operability **automatically** — but remember automated tests catch only a
+  fraction of issues; the rest need a human (keyboard test, screen-reader spot check,
+  judgement on contrast/meaning).
 
 **Rule of thumb:** automated check + keyboard-only walkthrough + the checklist above = a solid
 pass for a hackathon feature.
@@ -81,4 +82,3 @@ you review.
 - Understanding WCAG 2.2: <https://www.w3.org/WAI/WCAG22/Understanding/>
 - Writing for web accessibility (W3C WAI):
   <https://www.w3.org/WAI/tips/writing/>
-- axe-core rules: <https://dequeuniversity.com/rules/axe/>

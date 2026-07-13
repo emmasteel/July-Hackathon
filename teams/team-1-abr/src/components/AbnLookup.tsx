@@ -18,7 +18,7 @@ type LookupState =
  * - Real <form> and <button> elements → full keyboard support (2.1.1).
  * - aria-invalid is toggled on the field when there's an error (4.1.2).
  *
- * Residual risks to verify with the axe-core check + a keyboard walkthrough:
+ * Residual risks to verify with the Playwright accessibility checks + a keyboard walkthrough:
  * colour contrast of the theme, and focus-visible styling (see styles.css).
  */
 export function AbnLookup(): JSX.Element {

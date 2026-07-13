@@ -1,5 +1,5 @@
 /* Minimal styling with accessibility in mind.
-   - Colours chosen to meet WCAG 2.2 AA contrast (verify with the axe-core check).
+   - Colours chosen to meet WCAG 2.2 AA contrast (verify manually / with the Playwright checks).
    - A strong :focus-visible outline so keyboard users can see focus (2.4.7).
    Teams can restyle — just keep contrast and focus visibility. */
 

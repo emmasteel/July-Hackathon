@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-// Playwright config for end-to-end + accessibility (axe-core) tests.
+// Playwright config for end-to-end + accessibility tests.
 // The dev server is started automatically; tests hit the LOCAL app only.
 // NEVER point e2e tests at abr.business.gov.au or any live government site.
 export default defineConfig({

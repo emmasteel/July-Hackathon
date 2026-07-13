@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-// Playwright config for end-to-end + accessibility (axe-core) tests.
+// Playwright config for end-to-end + accessibility tests.
 // Tests hit the LOCAL app only. NEVER point them at business.gov.au or any live site.
 export default defineConfig({
   testDir: './tests/e2e',

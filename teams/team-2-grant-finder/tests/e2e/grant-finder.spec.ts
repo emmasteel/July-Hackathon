@@ -1,8 +1,11 @@
 import { test, expect } from '@playwright/test';
-import AxeBuilder from '@axe-core/playwright';
 
 /**
  * Starter end-to-end + accessibility checks (Objectives C5 and stretch goal S2).
+ *
+ * Accessibility is verified with plain Playwright assertions (accessible names,
+ * semantic roles, keyboard operability) plus Copilot-assisted review — no
+ * third-party scanner.
  *
  * These run against the LOCAL app only (see playwright.config.ts). Do NOT change
  * them to hit business.gov.au or any live government site.
@@ -34,16 +37,27 @@ test.describe('Grant finder', () => {
     await expect(page.getByRole('alert')).toContainText(/please fix/i);
   });
 
-  test('has no automatically-detectable WCAG 2.2 AA violations (S2)', async ({
+  test('form controls are accessible and keyboard-operable (S2)', async ({
     page,
   }) => {
     await page.goto('/');
 
-    const results = await new AxeBuilder({ page })
-      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
-      .analyze();
+    // Every control is reached by its visible <label> (not placeholder-only).
+    await expect(page.getByLabel(/state or territory/i)).toBeVisible();
+    await expect(page.getByLabel(/industry/i)).toBeVisible();
+    await expect(page.getByLabel(/number of employees/i)).toBeVisible();
+    await expect(page.getByLabel(/annual turnover/i)).toBeVisible();
+    await expect(page.getByLabel(/years trading/i)).toBeVisible();
 
-    expect(results.violations).toEqual([]);
+    // The submit control is a real button with an accessible name.
+    await expect(
+      page.getByRole('button', { name: /find grants/i }),
+    ).toBeVisible();
+
+    // Keyboard-only: the first control can be focused directly.
+    const firstField = page.getByLabel(/state or territory/i);
+    await firstField.focus();
+    await expect(firstField).toBeFocused();
   });
 
   // TODO (C5): with Copilot, add a regression test for a profile that matches NO

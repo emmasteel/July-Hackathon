@@ -28,7 +28,7 @@ src/
 tests/
   abn.test.ts         starter unit tests (extend in C4)
   AbnLookup.test.tsx  starter component test
-  e2e/abn-lookup.spec.ts   Playwright e2e + axe-core check (C5 / S2)
+  e2e/abn-lookup.spec.ts   Playwright e2e + accessibility checks (C5 / S2)
 fixtures/
   abn-sample-data.json       sample business records
   abr-sample-results.html    imperfect ABR-style markup for a11y practice
@@ -68,7 +68,7 @@ Use [../../docs/accessibility-wcag-primer.md](../../docs/accessibility-wcag-prim
 
 1. **The provided fixture** [`fixtures/abr-sample-results.html`](fixtures/abr-sample-results.html)
    — it has several planted WCAG issues. Find and record them.
-2. **Your own app** — run the axe-core check (`npm run test:e2e`) and do a keyboard-only
+2. **Your own app** — run the Playwright accessibility checks (`npm run test:e2e`) and do a keyboard-only
    walkthrough.
 3. *(Optional, observation only)* the **live ABR** in a browser — note issues you see, but do
    not automate against it.
@@ -81,5 +81,3 @@ Use [../../docs/accessibility-wcag-primer.md](../../docs/accessibility-wcag-prim
   [`src/lib/abn.ts`](src/lib/abn.ts)).
 - **Sample data:** four records in [`fixtures/abn-sample-data.json`](fixtures/abn-sample-data.json),
   including one "Cancelled" entity so you can show status handling accessibly.
-- 〔**TODO — organiser:** confirm whether you want any additional real-but-public sample ABNs
-  added to the fixture.〕

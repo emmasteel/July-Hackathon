@@ -37,7 +37,7 @@ const EMPTY_FORM: FormValues = {
  * - Real <form>, <select>, <button> → full keyboard support (2.1.1).
  * - Each result explains WHY it matched (transparency + not colour-only, 1.4.1).
  *
- * Residual risks to verify with axe-core + a keyboard walkthrough: colour
+ * Residual risks to verify with the Playwright accessibility checks + a keyboard walkthrough: colour
  * contrast of the theme and focus-visible styling (see styles.css).
  */
 export function GrantFinder(): JSX.Element {

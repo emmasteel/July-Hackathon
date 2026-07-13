@@ -4,7 +4,6 @@
     "github.copilot-chat",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "ms-playwright.playwright",
-    "deque-systems.vscode-axe-linter"
+    "ms-playwright.playwright"
   ]
 }

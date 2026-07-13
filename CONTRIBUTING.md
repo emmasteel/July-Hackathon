@@ -14,8 +14,6 @@ way. Typically you'll:
 4. Keep the [Code of Conduct](CODE_OF_CONDUCT.md) and [SECURITY.md](SECURITY.md) rules in mind
    — **no secrets, no real data, no live-site scraping in tests**.
 
-> 〔**TODO — organiser:** decide the workflow — do teams push branches to this repo, fork it,
-> or work locally and demo from their laptops? Document your choice here before the day.〕
 
 ## Commit message style
 

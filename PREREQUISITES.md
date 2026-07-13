@@ -1,13 +1,12 @@
 [← Back to home](index.html)
 
-# Prerequisites — complete BEFORE 22 July
+# Prerequisites - complete BEFORE 22 July
 
 This is a **bring-your-own-device (BYOD)** event. Please arrive fully set up so we can spend
 the morning building, not installing. It should take **20–30 minutes**. Everything here is
 copy-paste simple and works on Windows, macOS, and Linux.
 
-If you get stuck, see [docs/copilot-setup-guide.md](docs/copilot-setup-guide.md) or ask in
-〔**TODO: add support channel — Teams channel / email / Slack**〕 before the day.
+If you get stuck, see [docs/copilot-setup-guide.md](docs/copilot-setup-guide.md) or send us an [email](mailto:emma.steel@microsoft.com) before the day.
 
 ---
 
@@ -16,18 +15,15 @@ If you get stuck, see [docs/copilot-setup-guide.md](docs/copilot-setup-guide.md)
 - [ ] You have a GitHub account and can sign in at <https://github.com>.
 - [ ] GitHub Copilot is **enabled** for your account.
 
-> 〔**TODO — organiser:** confirm how participants get Copilot access. Options:
-> **(a)** organisation Copilot Business/Enterprise seats assigned in advance (preferred — no
-> personal billing), **(b)** participants use **Copilot Free** (limited monthly completions/
-> chat), or **(c)** an existing individual subscription. Communicate the chosen path and any
-> org/SSO steps to participants at least a week out.〕
-
 **Verify:** Visit <https://github.com/settings/copilot> — you should see Copilot listed as
 active (via an org seat or a personal plan).
 
 ---
 
 ## 2. An IDE with the GitHub Copilot extension
+
+> [!TIP]
+> An IDE is an "integrated development environment" - a code editor with extra features (such as GitHub Copilot). See the [Glossary](docs/glossary.md) if you're new to this.
 
 **Visual Studio Code is recommended** and all facilitator demos use it.
 
@@ -47,12 +43,9 @@ active (via an org seat or a personal plan).
 
 The starter apps use **Node.js** and **git**.
 
-- [ ] Install **Node.js LTS** 〔**TODO: confirm — Node 20 LTS or Node 22 LTS**〕:
+- [ ] Install **Node.js LTS** :
   <https://nodejs.org> (the "LTS" download).
 - [ ] Install **git**: <https://git-scm.com/downloads>
-
-> If your team confirms a different stack (.NET / Python / Power Platform), this section will be
-> updated. See the stack note in the [README](README.md).
 
 ---
 
@@ -97,7 +90,6 @@ If every box is ticked, you're ready. 🎉
 
 ## Optional but recommended
 
-- [ ] Install the **axe Accessibility Linter** VS Code extension (helps with stretch goal S2).
 - [ ] Skim the [Accessibility / WCAG 2.2 AA primer](docs/accessibility-wcag-primer.md).
 - [ ] Skim the [Glossary](docs/glossary.md) if terms like *acceptance criteria*, *CI*, or
       *e2e test* are new to you.
