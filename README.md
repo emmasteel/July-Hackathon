@@ -60,8 +60,8 @@ only the use case differs.
 
 | Team | Use case | Track |
 | --- | --- | --- |
-| **Team 1 - ABR** | Accessibility analysis of the Australian Business Register + an accessible ABN lookup feature | [teams/team-1-abr/](teams/team-1-abr/) |
-| **Team 2 - Grant Finder** | An accessible business.gov.au grants / eligibility checker | [teams/team-2-grant-finder/](teams/team-2-grant-finder/) |
+| **Team 1 - ABR** | Accessibility analysis of the Australian Business Register + an accessible ABN lookup feature | [teams/team-1-abr/docs/](teams/team-1-abr/docs/) |
+| **Team 2 - Grant Finder** | An accessible business.gov.au grants / eligibility checker | [teams/team-2-grant-finder/docs/](teams/team-2-grant-finder/docs/) |
 
 ---
 
