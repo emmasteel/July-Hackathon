@@ -1,5 +1,7 @@
 # GitHub Copilot Hackathon 🚀
 
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20site-222222?logo=github&logoColor=white)](https://emmasteel.github.io/July-Hackathon)
+
 A half-day, hands-on hackathon that teaches teams to build a public-facing government web
 feature **with GitHub Copilot** — from user stories to spec, code, tests, automation,
 security, and accessibility.
