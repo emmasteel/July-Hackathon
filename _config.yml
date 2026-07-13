@@ -18,7 +18,7 @@ description: >-
   public-facing government web features with Copilot.
 
 # A clean, readable theme for the rendered Markdown docs.
-theme: cayman
+theme: jekyll-theme-cayman
 
 # Keep build output tidy: don't publish tooling/output folders.
 exclude:
