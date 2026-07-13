@@ -1,0 +1,150 @@
+/* Minimal styling with accessibility in mind.
+   - Colours chosen to meet WCAG 2.2 AA contrast (verify with the axe-core check).
+   - A strong :focus-visible outline so keyboard users can see focus (2.4.7).
+   Teams can restyle — just keep contrast and focus visibility. */
+
+:root {
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --brand: #0b5c3b; /* dark green, ~6.5:1 on white */
+  --brand-fg: #ffffff;
+  --error: #b3261e;
+  --border: #6b6b6b;
+  --eligible: #0b6a3a;
+  --ineligible: #6b6b6b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--fg);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
+}
+
+header {
+  background: var(--brand);
+  color: var(--brand-fg);
+}
+
+header h1 {
+  margin: 0 0 0.25rem;
+}
+
+.tagline {
+  margin: 0;
+}
+
+.field {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  font-size: 1rem;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+}
+
+input[aria-invalid='true'],
+select[aria-invalid='true'] {
+  border-color: var(--error);
+}
+
+button {
+  min-height: 44px;
+  padding: 0.55rem 1.2rem;
+  font-size: 1rem;
+  color: var(--brand-fg);
+  background: var(--brand);
+  border: 2px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid #ffbf47;
+  outline-offset: 2px;
+}
+
+.error {
+  color: var(--error);
+  font-weight: 600;
+  margin: 0.25rem 0 0;
+}
+
+.error-summary {
+  border: 2px solid var(--error);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.error-summary p {
+  margin-top: 0;
+  font-weight: 700;
+}
+
+.results {
+  margin-top: 1.5rem;
+}
+
+.grant-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.grant-card {
+  border: 1px solid var(--border);
+  border-left-width: 6px;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+}
+
+.grant-card--eligible {
+  border-left-color: var(--eligible);
+}
+
+.grant-card--ineligible {
+  border-left-color: var(--ineligible);
+}
+
+.grant-card h4 {
+  margin: 0 0 0.25rem;
+}
+
+.grant-status {
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.reasons-heading {
+  font-weight: 600;
+  margin: 0.5rem 0 0.25rem;
+}
+
+footer {
+  color: #444;
+  font-size: 0.9rem;
+}

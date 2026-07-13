@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Copilot Hackathon</title>
+    <meta
+      name="description"
+      content="A half-day, hands-on GitHub Copilot hackathon — build accessible, secure public-facing government web features with Copilot."
+    />
+
+    <!--
+      This landing page is a self-contained, accessible GitHub Pages page.
+      It practises what the hackathon preaches: semantic landmarks, a skip link,
+      keyboard-visible focus, and AA-contrast colours.
+
+      Links to the .md docs point at their Jekyll-rendered .html paths, which
+      GitHub Pages generates automatically (via the default jekyll-optional-
+      front-matter, jekyll-relative-links, and jekyll-readme-index plugins).
+      Team-folder links resolve to each folder's README.md as its index.
+
+      〔TODO — organiser: set REPO_URL below to the real public repo URL. It is
+       used for the "View on GitHub" button and the links to files under
+       .github/ (which Jekyll does not publish because the folder starts with a
+       dot).〕
+    -->
+    <style>
+      :root {
+        --bg: #ffffff;
+        --fg: #1a1a1a;
+        --muted: #4a4a4a;
+        --brand: #00558b; /* dark blue, ~7:1 on white */
+        --brand-2: #0b5c3b; /* dark green */
+        --brand-fg: #ffffff;
+        --surface: #f4f7fa;
+        --border: #c9d3dc;
+        --accent: #ffbf47;
+        --core: #00558b;
+        --stretch: #7a4bb0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica,
+          Arial, sans-serif;
+        color: var(--fg);
+        background: var(--bg);
+        line-height: 1.6;
+      }
+
+      a {
+        color: var(--brand);
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 2px;
+        border-radius: 2px;
+      }
+
+      /* Skip link — visible on keyboard focus. */
+      .skip-link {
+        position: absolute;
+        left: -999px;
+        top: 0;
+        background: var(--fg);
+        color: #fff;
+        padding: 0.6rem 1rem;
+        z-index: 100;
+      }
+      .skip-link:focus {
+        left: 0;
+      }
+
+      .container {
+        max-width: 68rem;
+        margin: 0 auto;
+        padding: 0 1.25rem;
+      }
+
+      /* Header / hero */
+      header.hero {
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        color: var(--brand-fg);
+        padding: 3rem 0 2.5rem;
+      }
+      header.hero a {
+        color: #fff;
+      }
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.8rem;
+        font-weight: 700;
+        margin: 0 0 0.5rem;
+        opacity: 0.9;
+      }
+      header.hero h1 {
+        margin: 0 0 0.5rem;
+        font-size: clamp(1.8rem, 4vw, 2.75rem);
+        line-height: 1.15;
+      }
+      .hero p.lede {
+        margin: 0 0 1.5rem;
+        max-width: 42rem;
+        font-size: 1.1rem;
+      }
+      .facts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.5rem;
+        margin: 0 0 1.5rem;
+        padding: 0;
+        list-style: none;
+        font-weight: 600;
+      }
+      .facts li::before {
+        content: '›';
+        margin-right: 0.4rem;
+        color: var(--accent);
+        font-weight: 700;
+      }
+      .btn {
+        display: inline-block;
+        background: #fff;
+        color: var(--brand);
+        font-weight: 700;
+        padding: 0.6rem 1.2rem;
+        border-radius: 6px;
+        text-decoration: none;
+        border: 2px solid transparent;
+        min-height: 44px;
+      }
+      .btn:hover {
+        background: var(--surface);
+      }
+
+      /* Sections */
+      main {
+        padding: 2.5rem 0 1rem;
+      }
+      section {
+        margin-bottom: 3rem;
+      }
+      section > h2 {
+        font-size: 1.6rem;
+        margin: 0 0 0.35rem;
+      }
+      section > p.section-intro {
+        margin: 0 0 1.25rem;
+        color: var(--muted);
+        max-width: 48rem;
+      }
+
+      /* Card grids */
+      .grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+      .card {
+        display: flex;
+        flex-direction: column;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1.1rem 1.25rem;
+        height: 100%;
+      }
+      .card h3 {
+        margin: 0 0 0.4rem;
+        font-size: 1.15rem;
+      }
+      .card p {
+        margin: 0 0 0.75rem;
+        color: var(--muted);
+        flex-grow: 1;
+      }
+      .card .card-link {
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .card .card-link::after {
+        content: ' →';
+      }
+      .tag {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        padding: 0.15rem 0.55rem;
+        border-radius: 999px;
+        color: #fff;
+        margin-bottom: 0.6rem;
+        align-self: flex-start;
+      }
+      .tag--core {
+        background: var(--core);
+      }
+      .tag--stretch {
+        background: var(--stretch);
+      }
+
+      /* Team cards — larger, side by side */
+      .teams {
+        display: grid;
+        gap: 1.25rem;
+        grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+      }
+      .team-card {
+        border-radius: 12px;
+        padding: 1.5rem;
+        color: #fff;
+      }
+      .team-card.team-1 {
+        background: var(--brand);
+      }
+      .team-card.team-2 {
+        background: var(--brand-2);
+      }
+      .team-card h3 {
+        margin-top: 0;
+        font-size: 1.35rem;
+      }
+      .team-card a.btn {
+        margin-top: 0.5rem;
+      }
+
+      /* Steps (how the day runs) */
+      ol.steps {
+        counter-reset: step;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 0.75rem;
+      }
+      ol.steps li {
+        position: relative;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 0.85rem 1rem 0.85rem 3.25rem;
+      }
+      ol.steps li::before {
+        counter-increment: step;
+        content: counter(step);
+        position: absolute;
+        left: 0.85rem;
+        top: 0.85rem;
+        width: 1.75rem;
+        height: 1.75rem;
+        background: var(--brand);
+        color: #fff;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+      }
+
+      /* Tips */
+      .tips {
+        background: #fff8e6;
+        border: 1px solid var(--accent);
+        border-radius: 10px;
+        padding: 1.25rem 1.5rem;
+      }
+      .tips h2 {
+        margin-top: 0;
+      }
+      .tips ul {
+        margin: 0;
+        padding-left: 1.25rem;
+      }
+      .tips li {
+        margin-bottom: 0.4rem;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--surface);
+        border-top: 1px solid var(--border);
+        padding: 1.5rem 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+      footer p {
+        margin: 0.25rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="hero">
+      <div class="container">
+        <p class="eyebrow">Hands-on GitHub Copilot learning</p>
+        <h1>GitHub Copilot Hackathon</h1>
+        <p class="lede">
+          A half-day, hands-on event where two teams build accessible, secure,
+          public-facing government web features — <strong>with</strong> GitHub
+          Copilot. Learn to prompt, review, and refine, whatever your role.
+        </p>
+        <ul class="facts">
+          <li>Wed 22 July 2026</li>
+          <li>09:00–14:00 AEST</li>
+          <li>2 teams of 6</li>
+          <li>All skill levels welcome</li>
+        </ul>
+        <!-- 〔TODO: replace with the real public repo URL〕 -->
+        <a class="btn" href="https://github.com/your-org/github-copilot-hackathon"
+          >View on GitHub</a
+        >
+      </div>
+    </header>
+
+    <main id="main" class="container">
+      <!-- Start here -->
+      <section aria-labelledby="start-heading">
+        <h2 id="start-heading">Start here</h2>
+        <p class="section-intro">
+          New to the event? Work through these in order. Everything can be done
+          on your own laptop before the day.
+        </p>
+        <ul class="grid">
+          <li class="card">
+            <h3>1. Prerequisites</h3>
+            <p>
+              Complete the setup checklist before 22 July: Copilot access, your
+              IDE, Node, and a one-command verify step.
+            </p>
+            <a class="card-link" href="PREREQUISITES.html">Get set up</a>
+          </li>
+          <li class="card">
+            <h3>2. Agenda</h3>
+            <p>
+              The run sheet for the day, timed 09:00–14:00, so you know what
+              happens when.
+            </p>
+            <a class="card-link" href="AGENDA.html">See the agenda</a>
+          </li>
+          <li class="card">
+            <h3>3. Objectives</h3>
+            <p>
+              The core spine (C1–C5) and bonus stretch goals (S1–S5), each with a
+              clear definition of done.
+            </p>
+            <a class="card-link" href="OBJECTIVES.html">View objectives</a>
+          </li>
+          <li class="card">
+            <h3>Copilot setup guide</h3>
+            <p>
+              Step-by-step: enabling Copilot and verifying it in VS Code,
+              JetBrains, or Visual Studio.
+            </p>
+            <a class="card-link" href="docs/copilot-setup-guide.html"
+              >Open the guide</a
+            >
+          </li>
+        </ul>
+      </section>
+
+      <!-- Team tracks -->
+      <section aria-labelledby="teams-heading">
+        <h2 id="teams-heading">Choose your team track</h2>
+        <p class="section-intro">
+          Both teams hit the same objectives — only the use case differs. Pick
+          your track to find its starter app, user stories, and worksheet.
+        </p>
+        <div class="teams">
+          <article class="team-card team-1">
+            <h3>Team 1 — ABR</h3>
+            <p>
+              Analyse the Australian Business Register for accessibility gaps and
+              build an accessible ABN lookup feature that shows how to do it
+              right.
+            </p>
+            <a class="btn" href="teams/team-1-abr/">Open Team 1 track</a>
+          </article>
+          <article class="team-card team-2">
+            <h3>Team 2 — Grant Finder</h3>
+            <p>
+              Build an accessible grants / eligibility checker that helps a small
+              business find grants it qualifies for — and explains why each one
+              matches.
+            </p>
+            <a class="btn" href="teams/team-2-grant-finder/"
+              >Open Team 2 track</a
+            >
+          </article>
+        </div>
+      </section>
+
+      <!-- Core objectives -->
+      <section aria-labelledby="core-heading">
+        <h2 id="core-heading">Core objectives — the shared spine</h2>
+        <p class="section-intro">
+          Do these in order. Each is about completing the task
+          <em>with</em> Copilot: prompting it, reviewing its output, and
+          refining.
+        </p>
+        <ul class="grid">
+          <li class="card">
+            <span class="tag tag--core">C1</span>
+            <h3>Set up for Copilot</h3>
+            <p>
+              Author a <code>copilot-instructions.md</code> and prompt files so
+              Copilot understands your conventions.
+            </p>
+          </li>
+          <li class="card">
+            <span class="tag tag--core">C2</span>
+            <h3>Stories → spec</h3>
+            <p>
+              Turn user stories into functional and non-functional requirements
+              with acceptance criteria.
+            </p>
+          </li>
+          <li class="card">
+            <span class="tag tag--core">C3</span>
+            <h3>Build the feature</h3>
+            <p>Build the core feature for your use case from the spec.</p>
+          </li>
+          <li class="card">
+            <span class="tag tag--core">C4</span>
+            <h3>Unit testing</h3>
+            <p>Generate, review, and strengthen unit tests with Copilot.</p>
+          </li>
+          <li class="card">
+            <span class="tag tag--core">C5</span>
+            <h3>Test automation</h3>
+            <p>Build an automated end-to-end / regression check.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Stretch goals -->
+      <section aria-labelledby="stretch-heading">
+        <h2 id="stretch-heading">Stretch goals — bonus, pick any</h2>
+        <p class="section-intro">
+          Independent extensions of the core work. Attempt them in any order and
+          skip any without blocking the rest.
+        </p>
+        <ul class="grid">
+          <li class="card">
+            <span class="tag tag--stretch">S1</span>
+            <h3>Security-first</h3>
+            <p>Find and fix vulnerabilities; wire up scanning in CI.</p>
+          </li>
+          <li class="card">
+            <span class="tag tag--stretch">S2</span>
+            <h3>Accessibility</h3>
+            <p>
+              Get Copilot to flag WCAG 2.2 AA issues and add an axe-core check.
+            </p>
+          </li>
+          <li class="card">
+            <span class="tag tag--stretch">S3</span>
+            <h3>CI/CD</h3>
+            <p>Author a GitHub Actions pipeline: build, test, scan.</p>
+          </li>
+          <li class="card">
+            <span class="tag tag--stretch">S4</span>
+            <h3>Documentation</h3>
+            <p>Generate and maintain README, ADRs, and inline docs.</p>
+          </li>
+          <li class="card">
+            <span class="tag tag--stretch">S5</span>
+            <h3>Legacy modernisation</h3>
+            <p>Refactor a small legacy snippet, preserving behaviour.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Resources -->
+      <section aria-labelledby="resources-heading">
+        <h2 id="resources-heading">Guides &amp; resources</h2>
+        <p class="section-intro">
+          Reference material for every role — developers, business analysts,
+          testers, and security specialists.
+        </p>
+        <ul class="grid">
+          <li class="card">
+            <h3>Accessibility (WCAG 2.2 AA) primer</h3>
+            <p>Plain-English checks plus a findings worksheet.</p>
+            <a class="card-link" href="docs/accessibility-wcag-primer.html"
+              >Read the primer</a
+            >
+          </li>
+          <li class="card">
+            <h3>Glossary</h3>
+            <p>Plain-English definitions of the tooling and terms.</p>
+            <a class="card-link" href="docs/glossary.html">Open the glossary</a>
+          </li>
+          <li class="card">
+            <h3>Facilitator run sheet</h3>
+            <p>Minute-by-minute guide for facilitators.</p>
+            <a class="card-link" href="docs/facilitator-runsheet.html"
+              >Open the run sheet</a
+            >
+          </li>
+          <li class="card">
+            <h3>Copilot instructions (example)</h3>
+            <p>A worked <code>copilot-instructions.md</code> to learn from.</p>
+            <!-- 〔TODO: repo URL — .github/ is not published by Jekyll〕 -->
+            <a
+              class="card-link"
+              href="https://github.com/your-org/github-copilot-hackathon/blob/main/.github/copilot-instructions.md"
+              >View on GitHub</a
+            >
+          </li>
+          <li class="card">
+            <h3>Reusable prompts</h3>
+            <p>Prompt files for spec, tests, a11y, and security reviews.</p>
+            <!-- 〔TODO: repo URL — .github/ is not published by Jekyll〕 -->
+            <a
+              class="card-link"
+              href="https://github.com/your-org/github-copilot-hackathon/tree/main/.github/prompts"
+              >Browse the prompts</a
+            >
+          </li>
+        </ul>
+      </section>
+
+      <!-- How the day runs -->
+      <section aria-labelledby="how-heading">
+        <h2 id="how-heading">How the day runs</h2>
+        <ol class="steps">
+          <li>Arrive, check your setup, run a quick Copilot sanity test.</li>
+          <li>Welcome, meet your team, get your use case.</li>
+          <li>Set up the repo for Copilot (C1), then turn stories into a spec (C2).</li>
+          <li>Build the feature (C3) and strengthen it with unit tests (C4).</li>
+          <li>Add automated tests (C5), then grab any stretch goals you fancy.</li>
+          <li>Show-and-tell: demo your feature and your best Copilot moment.</li>
+        </ol>
+      </section>
+
+      <!-- Tips -->
+      <section aria-labelledby="tips-heading" class="tips">
+        <h2 id="tips-heading">💡 Tips for the day</h2>
+        <ul>
+          <li>
+            <strong>Prompt, review, refine.</strong> Copilot is a pair, not an
+            oracle — always read and correct its output.
+          </li>
+          <li>
+            <strong>Protect the spine.</strong> A finished C1–C5 beats a
+            half-done stretch goal.
+          </li>
+          <li>
+            <strong>Everyone contributes.</strong> BAs shape the spec, testers
+            drive tests, security leads the review, developers build.
+          </li>
+          <li>
+            <strong>Small steps.</strong> Break work into focused prompts and ask
+            follow-up questions in Copilot Chat.
+          </li>
+          <li>
+            <strong>Stay safe.</strong> No secrets, no real data, and never hit
+            live government sites in tests — use the fixtures.
+          </li>
+        </ul>
+        <p style="margin-bottom: 0"><strong>Happy hacking! 🚀</strong></p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>
+          GitHub Copilot Hackathon · Released under the MIT Licence · No
+          secrets or customer data in this public repo.
+        </p>
+        <p>
+          <!-- 〔TODO: replace with the real public repo URL〕 -->
+          <a href="https://github.com/your-org/github-copilot-hackathon">Source on GitHub</a>
+          · Built to be accessible — this page uses semantic landmarks, a skip
+          link, and visible keyboard focus.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+/* Minimal styling with accessibility in mind.
+   - Colours chosen to meet WCAG 2.2 AA contrast (verify with the axe-core check).
+   - A strong :focus-visible outline so keyboard users can see focus (2.4.7).
+   Teams can restyle — just keep contrast and focus visibility. */
+
+:root {
+  --bg: #ffffff;
+  --fg: #1a1a1a; /* ~15:1 on white */
+  --brand: #00558b; /* dark blue, ~7:1 on white */
+  --brand-fg: #ffffff;
+  --error: #b3261e; /* accessible red, ~5.9:1 on white */
+  --border: #6b6b6b;
+  --active: #0b6a3a;
+  --cancelled: #8a1c1c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--fg);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
+}
+
+header {
+  background: var(--brand);
+  color: var(--brand-fg);
+}
+
+header h1 {
+  margin: 0 0 0.25rem;
+}
+
+.tagline {
+  margin: 0;
+}
+
+.field {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.hint {
+  margin: 0 0 0.5rem;
+  color: #444; /* still ≥4.5:1 on white */
+  font-size: 0.95rem;
+}
+
+input[type='text'] {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  font-size: 1rem;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+}
+
+input[aria-invalid='true'] {
+  border-color: var(--error);
+}
+
+button {
+  /* Target size ≥ 24px (WCAG 2.5.8); comfortably larger here. */
+  min-height: 44px;
+  padding: 0.55rem 1.2rem;
+  font-size: 1rem;
+  color: var(--brand-fg);
+  background: var(--brand);
+  border: 2px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Visible focus indicator for keyboard users. */
+:focus-visible {
+  outline: 3px solid #ffbf47;
+  outline-offset: 2px;
+}
+
+.error {
+  color: var(--error);
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.results {
+  margin-top: 1.5rem;
+}
+
+.result-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+}
+
+.result-card h3 {
+  margin-top: 0;
+}
+
+dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.35rem 1rem;
+  margin: 0;
+}
+
+dt {
+  font-weight: 600;
+}
+
+dd {
+  margin: 0;
+}
+
+.status {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.status--active {
+  background: var(--active);
+}
+
+.status--cancelled {
+  background: var(--cancelled);
+}
+
+footer {
+  color: #444;
+  font-size: 0.9rem;
+}

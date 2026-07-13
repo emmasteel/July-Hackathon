@@ -1,0 +1,51 @@
+import { test, expect } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
+
+/**
+ * Starter end-to-end + accessibility checks (Objectives C5 and stretch goal S2).
+ *
+ * These run against the LOCAL app only (see playwright.config.ts). Do NOT change
+ * them to hit business.gov.au or any live government site.
+ */
+
+test.describe('Grant finder', () => {
+  test('shows matching grants with explanations for a valid profile', async ({
+    page,
+  }) => {
+    await page.goto('/');
+
+    await page.getByLabel(/state or territory/i).selectOption('VIC');
+    await page.getByLabel(/industry/i).selectOption('Manufacturing');
+    await page.getByLabel(/number of employees/i).fill('15');
+    await page.getByLabel(/annual turnover/i).fill('1000000');
+    await page.getByLabel(/years trading/i).fill('3');
+    await page.getByRole('button', { name: /find grants/i }).click();
+
+    // At least one grant should match and explain why.
+    await expect(page.getByText(/why it matches/i).first()).toBeVisible();
+  });
+
+  test('shows an accessible error summary for an empty form', async ({
+    page,
+  }) => {
+    await page.goto('/');
+    await page.getByRole('button', { name: /find grants/i }).click();
+
+    await expect(page.getByRole('alert')).toContainText(/please fix/i);
+  });
+
+  test('has no automatically-detectable WCAG 2.2 AA violations (S2)', async ({
+    page,
+  }) => {
+    await page.goto('/');
+
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
+      .analyze();
+
+    expect(results.violations).toEqual([]);
+  });
+
+  // TODO (C5): with Copilot, add a regression test for a profile that matches NO
+  // grants, and a keyboard-only walkthrough of the whole form.
+});

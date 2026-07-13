@@ -1,0 +1,76 @@
+# Starter CI — kept intentionally minimal. Teams extend this in stretch goal S3 (CI/CD)
+# and S1 (security scanning). It runs build + unit tests for BOTH team tracks.
+#
+# 〔TODO — organiser: confirm the Node version matches PREREQUISITES.md, and enable the
+#  optional scanning jobs once you're happy with them (see the commented blocks below).〕
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    name: Build & unit test (${{ matrix.team }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        team:
+          - teams/team-1-abr
+          - teams/team-2-grant-finder
+    defaults:
+      run:
+        working-directory: ${{ matrix.team }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20 # 〔TODO: confirm (20 or 22 LTS)〕
+          cache: npm
+          cache-dependency-path: ${{ matrix.team }}/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Type-check & build
+        run: npm run build --if-present
+
+      - name: Unit tests
+        run: npm test --if-present
+
+  # ---------------------------------------------------------------------------
+  # STRETCH GOAL S1 — Security scanning. Uncomment / extend during the event.
+  #
+  # dependency-review:
+  #   name: Dependency review
+  #   runs-on: ubuntu-latest
+  #   if: github.event_name == 'pull_request'
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/dependency-review-action@v4
+  #
+  # codeql:
+  #   name: CodeQL
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     security-events: write
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: github/codeql-action/init@v3
+  #       with:
+  #         languages: javascript-typescript
+  #     - uses: github/codeql-action/analyze@v3
+  #
+  # Secret scanning + push protection are enabled in the repo's
+  # Settings → Code security & analysis (no workflow needed).
+  # ---------------------------------------------------------------------------

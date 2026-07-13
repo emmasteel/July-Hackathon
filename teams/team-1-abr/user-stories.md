@@ -1,0 +1,118 @@
+# Team 1 — user stories (ABN lookup)
+
+Pre-populated backlog for the accessible ABN lookup feature. Sized so you can build **2–3**
+during the event; leave the rest as backlog. Use the
+[story-to-spec prompt](../../.github/prompts/story-to-spec.prompt.md) to turn these into a spec.
+
+Story 1 is **already implemented** in the starter skeleton — use it to learn the flow, then
+build Story 2 onward with Copilot.
+
+---
+
+## Story 1 — Look up a business by ABN *(implemented as the starter)*
+
+**As a** small business owner
+**I want** to look up a business by its ABN
+**so that** I can confirm a supplier is registered before I deal with them.
+
+**Acceptance criteria**
+- Given a valid 11-digit ABN present in the sample data, when I search, then the matching
+  business's name, status, entity type, location, and GST registration are shown.
+- Given a valid ABN not in the sample data, when I search, then a clear "no business found"
+  message is shown.
+- The ABN field has a visible label and the search works with keyboard only.
+
+**Non-functional:** accessible error/result announcements; input validated before use.
+
+---
+
+## Story 2 — Clear, accessible validation errors
+
+**As a** user who mistypes an ABN
+**I want** a clear, specific error message
+**so that** I know how to correct my input.
+
+**Acceptance criteria**
+- Given fewer/more than 11 digits, when I search, then I see "An ABN must be exactly 11 digits."
+- Given non-digit characters, when I search, then I see "An ABN must contain digits only."
+- Given a valid-length ABN that fails the checksum, when I search, then I see a checksum error.
+- Errors are announced to assistive tech (`role="alert"`) and the field is marked
+  `aria-invalid`.
+
+---
+
+## Story 3 — Accept ABNs with spaces
+
+**As a** user copying an ABN from an invoice (e.g. "51 824 753 556")
+**I want** the lookup to accept spaces
+**so that** I don't have to reformat the number.
+
+**Acceptance criteria**
+- Given an ABN with spaces between digit groups, when I search, then it is treated the same as
+  the unspaced form.
+- Given an ABN with other punctuation (e.g. dashes), when I search, then I see a helpful error.
+
+---
+
+## Story 4 — Show cancelled/inactive status prominently
+
+**As a** procurement officer
+**I want** to clearly see if an ABN is cancelled
+**so that** I don't rely on a deregistered entity.
+
+**Acceptance criteria**
+- Given a cancelled ABN, when I view the result, then the status "Cancelled" is shown in text
+  (not colour alone) and is easy to notice.
+- The status meaning is available to screen-reader users.
+
+---
+
+## Story 5 — Recent searches (session only)
+
+**As a** user checking several ABNs
+**I want** to see my recent searches this session
+**so that** I can re-check without retyping.
+
+**Acceptance criteria**
+- Given I have searched at least once, when I look below the form, then I see my recent ABNs.
+- Recent searches are kept in memory only (not persisted) and can be cleared.
+- The list is keyboard navigable and each item has an accessible name.
+
+**Security note:** do not persist searches to storage; keep them in memory for the session.
+
+---
+
+## Story 6 — Copy the ABN to clipboard
+
+**As a** user
+**I want** a button to copy a result's ABN
+**so that** I can paste it elsewhere quickly.
+
+**Acceptance criteria**
+- Given a result is shown, when I activate "Copy ABN", then the ABN is copied and I get an
+  accessible confirmation (announced, not just a colour change).
+- The button is keyboard operable and has a clear accessible name.
+
+---
+
+## Story 7 — Filter sample results by state *(backlog)*
+
+**As a** user
+**I want** to filter businesses by state/territory
+**so that** I can narrow results.
+
+**Acceptance criteria**
+- Given the sample dataset, when I choose a state, then only matching records are shown.
+- The filter control has a visible label and is operable by keyboard.
+
+---
+
+## Story 8 — Helpful empty and loading states *(backlog)*
+
+**As a** first-time user
+**I want** clear guidance before I search and while results load
+**so that** I understand what to do.
+
+**Acceptance criteria**
+- Given I haven't searched yet, when the page loads, then I see brief instructions.
+- Loading/'"no results" states are announced accessibly and don't shift layout jarringly.

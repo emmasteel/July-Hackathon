@@ -1,0 +1,54 @@
+name: User story
+description: Capture a user story in the standard format with acceptance criteria.
+title: "[Story] As a <role> I want <goal>"
+labels: ["user-story"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to capture a user story for your team's feature. Keep it small enough
+        to build (or spec) during the hackathon. See your team's `user-stories.md` for examples.
+  - type: input
+    id: story
+    attributes:
+      label: User story
+      description: In the form "As a <role> I want <goal> so that <benefit>".
+      placeholder: As a small business owner, I want to look up an ABN so that I can confirm a supplier is registered.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: Testable criteria, ideally in Given/When/Then form. One per line.
+      placeholder: |
+        - Given a valid 11-digit ABN, when I search, then the matching business details are shown.
+        - Given an invalid ABN, when I search, then a clear, accessible error message is shown.
+    validations:
+      required: true
+  - type: textarea
+    id: non-functional
+    attributes:
+      label: Non-functional requirements
+      description: Accessibility, security, performance considerations.
+      placeholder: |
+        - Accessibility: form control has a visible label; errors announced via role="alert".
+        - Security: input validated (11 digits) before use; no live site calls in tests.
+    validations:
+      required: false
+  - type: dropdown
+    id: team
+    attributes:
+      label: Team
+      options:
+        - Team 1 — ABR
+        - Team 2 — Grant Finder
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / open questions
+      description: Anything a BA should confirm, or links to fixtures/spec.
+    validations:
+      required: false

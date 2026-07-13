@@ -1,0 +1,36 @@
+# GitHub Pages / Jekyll configuration.
+#
+# Enabling GitHub Pages (Settings → Pages → Deploy from a branch → main / root)
+# builds this repo with Jekyll. The custom index.html is served as the landing
+# page, and every Markdown doc is rendered with the theme below.
+#
+# GitHub Pages enables these plugins by default, which make the docs "just work":
+#   - jekyll-optional-front-matter → renders .md files that have no front matter
+#   - jekyll-relative-links        → rewrites [text](FILE.md) links to .html
+#   - jekyll-readme-index          → serves each folder's README.md as its index
+#
+# 〔TODO — organiser: confirm the title/description and set the site url/baseurl
+#  once you know the Pages URL (e.g. https://<org>.github.io/<repo>).〕
+
+title: GitHub Copilot Hackathon
+description: >-
+  A half-day, hands-on GitHub Copilot hackathon — build accessible, secure,
+  public-facing government web features with Copilot.
+
+# A clean, readable theme for the rendered Markdown docs.
+theme: minima
+
+# Keep build output tidy: don't publish tooling/output folders.
+exclude:
+  - node_modules
+  - "**/node_modules"
+  - "**/dist"
+  - "**/coverage"
+  - "**/playwright-report"
+  - "**/test-results"
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle
+  - package.json
+  - package-lock.json
