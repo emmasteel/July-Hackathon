@@ -1,14 +1,16 @@
 :root {
   --bg: #ffffff;
-  --fg: #1a1a1a;
-  --muted: #4a4a4a;
-  --brand: #00558b; /* dark blue, ~7:1 on white */
-  --brand-2: #0b5c3b; /* dark green */
+  --fg: #606c71; /* Cayman body text */
+  --fg-strong: #1b1f23; /* strong text / card titles */
+  --muted: #606c71;
+  --brand: #159957; /* Cayman green — headings & accents */
+  --brand-2: #155799; /* Cayman blue */
   --brand-fg: #ffffff;
+  --link: #1e6bb8; /* Cayman link */
   --surface: #f4f7fa;
   --border: #c9d3dc;
   --accent: #ffbf47;
-  --core: #00558b;
+  --core: #155799;
   --stretch: #7a4bb0;
 }
 
@@ -22,15 +24,28 @@ html {
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   color: var(--fg);
   background: var(--bg);
-  line-height: 1.6;
+  line-height: 1.5;
+  font-size: 16px;
 }
 
 a {
-  color: var(--brand);
+  color: var(--link);
+}
+a:hover {
+  text-decoration: underline;
+}
+
+code {
+  padding: 2px 4px;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.9em;
+  color: #567482;
+  background-color: #f3f6fa;
+  border-radius: 0.3rem;
 }
 
 :focus-visible {
@@ -54,23 +69,26 @@ a {
 }
 
 .container {
-  max-width: 68rem;
+  max-width: 64rem;
   margin: 0 auto;
   padding: 0 1.25rem;
 }
 
-/* Header / hero */
+/* Header / hero — matches Cayman's page-header */
 header.hero {
-  background: linear-gradient(135deg, var(--brand), var(--brand-2));
-  color: var(--brand-fg);
-  padding: 3rem 0 2.5rem;
+  color: #fff;
+  text-align: center;
+  background-color: var(--brand);
+  background-image: linear-gradient(120deg, var(--brand-2), var(--brand));
+  padding: 3rem 1rem;
+}
+@media (min-width: 64em) {
+  header.hero {
+    padding: 5rem 6rem;
+  }
 }
 header.hero a {
   color: #fff;
-}
-/* Keep the white button's text dark so it isn't white-on-white (WCAG AA). */
-header.hero a.btn {
-  color: var(--brand);
 }
 .eyebrow {
   text-transform: uppercase;
@@ -78,51 +96,61 @@ header.hero a.btn {
   font-size: 0.8rem;
   font-weight: 700;
   margin: 0 0 0.5rem;
-  opacity: 0.9;
+  opacity: 0.7;
 }
 header.hero h1 {
-  margin: 0 0 0.5rem;
-  font-size: clamp(1.8rem, 4vw, 2.75rem);
-  line-height: 1.15;
+  margin: 0 0 0.1rem;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1.1;
+  font-weight: normal;
 }
 .hero p.lede {
-  margin: 0 0 1.5rem;
+  margin: 0 auto 1.5rem;
   max-width: 42rem;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
+  font-weight: normal;
+  opacity: 0.7;
 }
 .facts {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.5rem 1.5rem;
   margin: 0 0 1.5rem;
   padding: 0;
   list-style: none;
   font-weight: 600;
+  opacity: 0.9;
 }
 .facts li::before {
   content: '›';
   margin-right: 0.4rem;
-  color: var(--accent);
+  color: #fff;
   font-weight: 700;
+  opacity: 0.7;
 }
 .btn {
   display: inline-block;
-  background: #fff;
-  color: var(--brand);
-  font-weight: 700;
   padding: 0.6rem 1.2rem;
-  border-radius: 6px;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 0.3rem;
+  font-weight: normal;
   text-decoration: none;
-  border: 2px solid transparent;
   min-height: 44px;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
 }
 .btn:hover {
-  background: var(--surface);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
 }
 
 /* Sections */
 main {
   padding: 2.5rem 0 1rem;
+  font-size: 1.1rem;
 }
 section {
   margin-bottom: 3rem;
@@ -130,6 +158,8 @@ section {
 section > h2 {
   font-size: 1.6rem;
   margin: 0 0 0.35rem;
+  font-weight: normal;
+  color: var(--brand);
 }
 section > p.section-intro {
   margin: 0 0 1.25rem;
@@ -158,6 +188,7 @@ section > p.section-intro {
 .card h3 {
   margin: 0 0 0.4rem;
   font-size: 1.15rem;
+  color: var(--fg-strong);
 }
 .card p {
   margin: 0 0 0.75rem;
