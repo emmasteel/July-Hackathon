@@ -23,8 +23,8 @@ troubleshooting.
 ### 3. Verify it works
 - **Status bar:** the Copilot icon (bottom-right) should be solid, not greyed out or showing an
   error.
-- **Inline completion:** create a file `scratch.ts`, type:
-  ```ts
+- **Inline completion:** create a file `scratch.cs`, type:
+  ```csharp
   // function that returns the sum of two numbers
   ```
   Press Enter and wait — grey "ghost text" should appear. Press `Tab` to accept.

@@ -41,10 +41,10 @@ active (via an org seat or a personal plan).
 
 ## 3. Runtime + git for the default stack
 
-The starter apps use **Node.js** and **git**.
+The starter apps use the **.NET SDK** and **git**.
 
-- [ ] Install **Node.js LTS** :
-  <https://nodejs.org> (the "LTS" download).
+- [ ] Install the **.NET 8 SDK** (LTS):
+  <https://dotnet.microsoft.com/download> (the ".NET 8.0" SDK download).
 - [ ] Install **git**: <https://git-scm.com/downloads>
 
 ---
@@ -59,13 +59,12 @@ cd github-copilot-hackathon
 # Move into either team track (both verify the same way)
 cd teams/team-1-abr
 
-# Install dependencies and run the built-in check
-npm install
-npm run verify
+# Restore dependencies and run the tests
+dotnet test
 ```
 
-`npm run verify` prints your Node version, confirms dependencies installed, and runs the
-placeholder unit tests. You should see a green **"✅ Environment looks good"** line at the end.
+`dotnet test` restores dependencies, builds the projects, and runs the unit tests. You should
+see a green **"Passed!"** summary at the end.
 
 ---
 
@@ -75,14 +74,14 @@ Tick all of these on your own before the event:
 
 - [ ] I can sign in to GitHub in a browser.
 - [ ] `git --version` prints a version.
-- [ ] `node --version` prints v〔20 or 22〕.x.x.
+- [ ] `dotnet --version` prints v8.x.x (or newer).
 - [ ] VS Code opens this repo.
 - [ ] The **Copilot** icon in the VS Code status bar is active (not greyed out).
 - [ ] Copilot Chat opens (Ctrl/Cmd+Alt+I) and answers a test question like *"What does this
       repo do?"*.
-- [ ] In a `.ts` file, typing a comment like `// function that adds two numbers` shows a grey
+- [ ] In a `.cs` file, typing a comment like `// function that adds two numbers` shows a grey
       Copilot suggestion I can accept with `Tab`.
-- [ ] `npm run verify` printed **"✅ Environment looks good"**.
+- [ ] `dotnet test` printed a green **"Passed!"** summary.
 
 If every box is ticked, you're ready. 🎉
 

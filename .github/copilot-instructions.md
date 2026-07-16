@@ -23,21 +23,22 @@ choices in short comments.
 
 ## 2. Coding conventions
 
-- **Language:** TypeScript in `strict` mode. No implicit `any`. Prefer explicit return types
-  on exported functions.
-- **Stack:** Vite + React (function components + hooks). Vitest for unit tests, Playwright
-  for e2e/accessibility.
-- **Style:** small, pure functions for logic; keep components thin. Separate **pure logic**
-  (e.g. `src/lib/`) from **UI** (`src/components/`) so logic is easy to unit-test.
-- **Naming:** `camelCase` for variables/functions, `PascalCase` for components/types,
-  `SCREAMING_SNAKE_CASE` for constants.
+- **Language:** C# with nullable reference types enabled (`<Nullable>enable</Nullable>`).
+  Prefer explicit return types and immutable `record` types for data.
+- **Stack:** .NET 8 + Blazor WebAssembly (function-style components in `.razor` files). xUnit for
+  unit tests, Playwright for e2e/accessibility.
+- **Style:** small, pure static methods for logic; keep components thin. Separate **pure logic**
+  (e.g. `src/Core/`) from **UI** (`src/Web/Components/`) so logic is easy to unit-test.
+- **Naming:** `camelCase` for locals/parameters, `PascalCase` for types/methods/properties,
+  `SCREAMING_SNAKE_CASE` or `PascalCase` for constants; prefix private fields with `_`.
 - **Folder layout per team track:**
   ```
   src/
-    lib/          pure logic (validation, eligibility, formatting) — unit tested
-    components/    React UI components
-    App.tsx        composes the feature
-  tests/           Vitest unit tests (*.test.ts)
+    Core/          pure logic (validation, eligibility, formatting) — unit tested
+    Web/           Blazor WebAssembly UI
+      Components/  Razor components
+      App.razor    composes the feature
+  tests/           xUnit unit tests (*Tests.cs)
   tests/e2e/       Playwright specs (*.spec.ts)
   fixtures/        static sample data — NEVER call live sites
   ```
@@ -48,7 +49,7 @@ choices in short comments.
 
 - **Always add or update tests when you add or change behaviour.** Treat untested logic as
   unfinished.
-- Unit-test pure logic in `src/lib/` directly. Cover the **happy path plus edge cases**:
+- Unit-test pure logic in `src/Core/` directly. Cover the **happy path plus edge cases**:
   empty input, invalid input, boundary values, and error conditions.
 - When you generate tests, **also generate at least one failing/edge case** — don't only test
   the obvious success path.
@@ -66,9 +67,11 @@ Apply these proactively and **flag violations you notice in existing or generate
   strings. Use environment variables loaded from a git-ignored `.env`, and provide a
   `.env.example` with placeholders.
 - **Avoid injection & unsafe DOM.** Do not build HTML by string concatenation with user input.
-  Never use `dangerouslySetInnerHTML` with untrusted data. Prefer safe React rendering.
+  Never render untrusted data via `MarkupString` / `dangerouslySetInnerHTML`. Prefer safe
+  Blazor rendering (Razor auto-encodes output).
 - **Encode/escape output** appropriately for its context.
-- **Dependency hygiene.** Prefer maintained packages; avoid abandoned ones. Assume `npm audit`
+- **Dependency hygiene.** Prefer maintained packages; avoid abandoned ones. Assume
+  `dotnet list package --vulnerable`
   and dependency review run in CI.
 - When you generate code that touches input handling, **add a brief comment noting the
   validation** you applied, so reviewers can see the intent.
@@ -112,5 +115,5 @@ and a keyboard walkthrough.
 
 > During Objective C1, add a short section here describing YOUR feature's domain rules. Example
 > for Team 1: *"An ABN is 11 digits; validate using the ATO weighting algorithm; never call the
-> live ABR — use `fixtures/abr-sample.html`."* Example for Team 2: *"Eligibility rules live in
-> `src/lib/eligibility.ts`; a grant match must explain why it matched."*
+> live ABR — use `fixtures/abn-sample-data.json`."* Example for Team 2: *"Eligibility rules live in
+> `src/Core/Eligibility.cs`; a grant match must explain why it matched."*

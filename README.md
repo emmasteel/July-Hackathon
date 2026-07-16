@@ -92,9 +92,12 @@ Full detail and "definition of done" for each: [OBJECTIVES.md](OBJECTIVES.md)
 The starter apps use a lightweight, widely-approachable web stack so every objective is easy
 to demonstrate:
 
-- **TypeScript + Vite + React** - fast to run, minimal config
-- **Vitest** - unit tests
+- **C# + .NET 8 + Blazor WebAssembly** - fast to run, static-hostable, minimal config
+- **xUnit** - unit tests
 - **Playwright** - end-to-end + accessibility checks
+
+> The original TypeScript + Vite + React starter apps are preserved under
+> [archive/js-teams/](archive/js-teams/) in case you want to reuse them.
 
 ---
 
@@ -108,10 +111,9 @@ cd github-copilot-hackathon
 # 2. Move into your team's track
 cd teams/team-1-abr        # or teams/team-2-grant-finder
 
-# 3. Install and verify
-npm install
-npm run dev                # starts the local dev server
-npm test                   # runs the (placeholder) unit tests
+# 3. Build, test, and run
+dotnet test                # runs the unit tests
+dotnet run --project src/Web   # starts the local dev server
 ```
 
 Full setup + troubleshooting: [PREREQUISITES.md](PREREQUISITES.md) and
@@ -144,6 +146,8 @@ Full setup + troubleshooting: [PREREQUISITES.md](PREREQUISITES.md) and
 ├── teams/
 │   ├── team-1-abr/
 │   └── team-2-grant-finder/
+├── archive/
+│   └── js-teams/                 ← original TypeScript starter apps (reference)
 └── samples/
     └── legacy-snippet/           ← S5 refactor module
 ```

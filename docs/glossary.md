@@ -38,7 +38,7 @@ to the developer tooling. If a term in the repo is unclear, it's probably here.
 ## Testing
 
 - **Unit test** — an automated test of one small piece of logic in isolation (e.g. "does ABN
-  validation reject 10 digits?"). We use **Vitest**.
+  validation reject 10 digits?"). We use **xUnit**.
 - **End-to-end (e2e) test** — an automated test that drives the whole app like a user would
   (click, type, read results). We use **Playwright**.
 - **Regression test** — a test that guards against previously-fixed bugs coming back.
@@ -57,18 +57,19 @@ to the developer tooling. If a term in the repo is unclear, it's probably here.
 - **CodeQL** — GitHub's code-scanning engine that finds security bugs in your code.
 - **Secret scanning** — GitHub feature that detects committed secrets and can block the push.
 - **Dependency review** — a check that flags risky or vulnerable third-party packages in a PR.
-- **`npm audit`** — a command that reports known vulnerabilities in your dependencies.
+- **`dotnet list package --vulnerable`** — a command that reports known vulnerabilities in your
+  NuGet dependencies.
 - **OWASP Top 10** — a widely-used list of the most common web application security risks.
 
 ## Web & dev stack
 
-- **TypeScript** — JavaScript with type checking, which catches many bugs before you run code.
-- **Vite** — a fast tool that runs and builds the web app during development.
-- **React** — a library for building user interfaces from components.
+- **C#** — a modern, statically-typed language that catches many bugs before you run code.
+- **.NET** — the runtime and tooling that builds and runs C# applications.
+- **Blazor WebAssembly** — a framework for building web UIs in C# that run in the browser.
 - **Component** — a reusable building block of the UI (e.g. a search box).
-- **npm** — the tool that installs and runs project dependencies and scripts (`npm install`,
-  `npm test`, `npm run dev`).
-- **Node.js** — the runtime that executes JavaScript/TypeScript tooling outside the browser.
+- **`dotnet`** — the command-line tool that restores, builds, tests, and runs .NET projects
+  (`dotnet restore`, `dotnet test`, `dotnet run`).
+- **NuGet** — the package manager that installs .NET/C# dependencies.
 
 ## Process & platform
 

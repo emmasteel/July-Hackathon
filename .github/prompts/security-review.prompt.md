@@ -19,7 +19,7 @@ Produce a findings list. For each issue:
 
 Check at least:
 - **Input validation** at every boundary (type, length, format, range),
-- **Injection & unsafe DOM** (string-built HTML, `dangerouslySetInnerHTML`, `eval`),
+- **Injection & unsafe DOM** (string-built HTML, `MarkupString` with untrusted data, `eval`),
 - **Secrets** hard-coded in source or committed config,
 - **Output encoding/escaping** for the rendering context,
 - **Dependency risk** (unmaintained/unnecessary packages),

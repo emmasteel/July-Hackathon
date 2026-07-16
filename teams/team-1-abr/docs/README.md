@@ -17,17 +17,16 @@ feature** — an ABN lookup/results experience — that demonstrates doing it ri
 
 ## What's already here (your starting point)
 
-A working, accessible React skeleton you will extend:
+A working, accessible Blazor WebAssembly skeleton you will extend:
 
 ```
 src/
-  lib/abn.ts          ABN validation (ATO checksum) — pure, unit-tested
-  lib/lookup.ts       looks up sample data (NO live calls)
-  components/AbnLookup.tsx   accessible lookup form + results
-  App.tsx
+  Core/Abn.cs          ABN validation (ATO checksum) — pure, unit-tested
+  Core/Lookup.cs       looks up sample data (NO live calls)
+  Web/Components/AbnLookup.razor   accessible lookup form + results
+  Web/App.razor
 tests/
-  abn.test.ts         starter unit tests (extend in C4)
-  AbnLookup.test.tsx  starter component test
+  AbnTests.cs          starter unit tests (extend in C4)
   e2e/abn-lookup.spec.ts   Playwright e2e + accessibility checks (C5 / S2)
 fixtures/
   abn-sample-data.json       sample business records
@@ -37,10 +36,8 @@ fixtures/
 Run it:
 
 ```bash
-npm install
-npm run dev        # open http://localhost:5173
-npm test           # unit tests
-npm run test:e2e   # end-to-end + accessibility (installs browsers first time)
+dotnet test                    # unit tests
+dotnet run --project src/Web   # open the printed http://localhost:5xxx URL
 ```
 
 ---
@@ -68,7 +65,7 @@ Use [accessibility-wcag-primer.md](../../../docs/accessibility-wcag-primer.md) a
 
 1. **The provided fixture** [`fixtures/abr-sample-results.html`](../fixtures/abr-sample-results.html)
    — it has several planted WCAG issues. Find and record them.
-2. **Your own app** — run the Playwright accessibility checks (`npm run test:e2e`) and do a keyboard-only
+2. **Your own app** — run the Playwright accessibility checks and do a keyboard-only
    walkthrough.
 3. *(Optional, observation only)* the **live ABR** in a browser — note issues you see, but do
    not automate against it.
@@ -78,6 +75,6 @@ Use [accessibility-wcag-primer.md](../../../docs/accessibility-wcag-primer.md) a
 ## Domain notes
 
 - **ABN format:** 11 digits, validated with the ATO weighting algorithm (already implemented in
-  [`src/lib/abn.ts`](../src/lib/abn.ts)).
+  [`src/Core/Abn.cs`](../src/Core/Abn.cs)).
 - **Sample data:** four records in [`fixtures/abn-sample-data.json`](../fixtures/abn-sample-data.json),
   including one "Cancelled" entity so you can show status handling accessibly.

@@ -9,6 +9,11 @@ build/
 out/
 *.tsbuildinfo
 
+# .NET build output
+bin/
+obj/
+*.user
+
 # Test / coverage output
 coverage/
 playwright-report/

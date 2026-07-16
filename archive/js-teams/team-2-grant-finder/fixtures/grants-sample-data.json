@@ -1,0 +1,53 @@
+[
+  {
+    "id": "small-biz-digital",
+    "name": "Small Business Digital Adoption Grant",
+    "description": "Helps small businesses adopt digital tools and improve online presence.",
+    "amount": 15000,
+    "maxEmployees": 20,
+    "maxTurnover": 2000000,
+    "minYearsTrading": 1
+  },
+  {
+    "id": "regional-manufacturing",
+    "name": "Regional Manufacturing Growth Fund",
+    "description": "Supports manufacturers in regional areas to expand operations.",
+    "amount": 50000,
+    "eligibleStates": ["VIC", "TAS", "SA", "NT"],
+    "eligibleIndustries": ["Manufacturing"],
+    "maxEmployees": 200
+  },
+  {
+    "id": "agri-innovation",
+    "name": "Agricultural Innovation Grant",
+    "description": "Funds innovation projects in the agriculture sector.",
+    "amount": 30000,
+    "eligibleIndustries": ["Agriculture"],
+    "minYearsTrading": 2
+  },
+  {
+    "id": "tourism-recovery",
+    "name": "Tourism Recovery Support",
+    "description": "Assists tourism businesses to recover and grow.",
+    "amount": 25000,
+    "eligibleIndustries": ["Tourism", "Retail"],
+    "maxTurnover": 5000000
+  },
+  {
+    "id": "women-in-tech",
+    "name": "Women in Technology Startup Grant",
+    "description": "Supports early-stage technology businesses.",
+    "amount": 20000,
+    "eligibleIndustries": ["Technology"],
+    "maxEmployees": 10,
+    "maxTurnover": 1000000
+  },
+  {
+    "id": "startup-any",
+    "name": "New Business Establishment Grant",
+    "description": "A broad grant for newly established small businesses in any industry.",
+    "amount": 10000,
+    "maxEmployees": 5,
+    "maxTurnover": 500000
+  }
+]

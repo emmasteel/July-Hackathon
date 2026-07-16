@@ -16,7 +16,7 @@ This is your minute-by-minute guide with talking points, checkpoints, live-demo 
       "Organiser TODO" list in the handover.
 - [ ] Confirm Copilot access path for all participants (org seats vs Copilot Free) and that
       [PREREQUISITES.md](../PREREQUISITES.md) reflects it.
-- [ ] Do a full dry run: clone → `npm install` → `npm run verify` → `npm run dev` in **both**
+- [ ] Do a full dry run: clone → `dotnet test` → `dotnet run --project src/Web` in **both**
       team tracks on a clean machine.
 - [ ] Prepare the room: power, screen/projector, guest Wi-Fi, whiteboard, two team tables.
 - [ ] Print or pin: the agenda, the objectives, and each team's use case.
@@ -37,11 +37,11 @@ This is your minute-by-minute guide with talking points, checkpoints, live-demo 
   1. Open the repo in VS Code; confirm the Copilot status-bar icon is active.
   2. Open Copilot Chat (Ctrl/Cmd+Alt+I), ask *"What does this repo do?"* — it should read the
      `copilot-instructions.md` context.
-  3. In a `.ts` file, type `// add two numbers` and confirm a grey suggestion appears.
+  3. In a `.cs` file, type `// add two numbers` and confirm a grey suggestion appears.
 - Common fixes: not signed in (Accounts menu → sign in), extension disabled, org seat not
   assigned (have the admin ready), corporate proxy blocking Copilot (hotspot fallback).
 
-**Checkpoint:** every participant has run `npm run verify` successfully.
+**Checkpoint:** every participant has run `dotnet test` successfully.
 
 ---
 
@@ -104,13 +104,13 @@ the `story-to-spec` prompt once.
 functional, non-functional (accessibility + security!), and acceptance criteria. Emphasise
 **reviewing** the output — BAs should correct anything wrong.
 
-**Team task:** BAs drive the spec; developers start `src/lib/` logic and `src/components/` UI
+**Team task:** BAs drive the spec; developers start `src/Core/` logic and `src/Web/Components/` UI
 from the acceptance criteria.
 
 **If stuck:** shrink scope — one story, one happy path. The starter apps already have a working
 skeleton; they extend it rather than start blank.
 
-**Checkpoint:** spec exists; the app still runs (`npm run dev`).
+**Checkpoint:** spec exists; the app still runs (`dotnet run --project src/Web`).
 
 ---
 
@@ -118,18 +118,18 @@ skeleton; they extend it rather than start blank.
 
 **Goal:** core feature does something useful; unit tests pass with a real edge case added.
 
-**Live demo (5 min):** open a `*.test.ts` placeholder, run the
-[generate-unit-tests prompt](../.github/prompts/generate-unit-tests.prompt.md) on a `lib`
+**Live demo (5 min):** open a `*Tests.cs` placeholder, run the
+[generate-unit-tests prompt](../.github/prompts/generate-unit-tests.prompt.md) on a `Core`
 function. Show Copilot's first pass, then **ask it to critique its own coverage** and add an
 edge case (e.g. invalid checksum / empty input).
 
-**Team task:** testers lead; get `npm test` green; add at least one edge case beyond Copilot's
+**Team task:** testers lead; get `dotnet test` green; add at least one edge case beyond Copilot's
 first suggestion.
 
-**If stuck:** remind them logic lives in `src/lib/` and is pure — easiest thing to test. Start
+**If stuck:** remind them logic lives in `src/Core/` and is pure — easiest thing to test. Start
 with one function.
 
-**Checkpoint:** `npm test` passes; team can name one weak test they strengthened.
+**Checkpoint:** `dotnet test` passes; team can name one weak test they strengthened.
 
 ---
 
@@ -138,7 +138,7 @@ with one function.
 **Goal:** an automated e2e/regression check runs against fixtures.
 
 **Live demo (5 min):** open the Playwright starter spec, show it driving the UI. Stress: **use
-the fixtures, never the live gov site.** Run `npm run test:e2e`.
+the fixtures, never the live gov site.** Run the Playwright e2e suite.
 
 **Team task:** developers/testers pair to make the e2e test exercise their feature end-to-end.
 

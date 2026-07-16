@@ -1,7 +1,7 @@
 # Starter CI — kept intentionally minimal. Teams extend this in stretch goal S3 (CI/CD)
 # and S1 (security scanning). It runs build + unit tests for BOTH team tracks.
 #
-# 〔TODO — organiser: confirm the Node version matches PREREQUISITES.md, and enable the
+# 〔TODO — organiser: confirm the .NET version matches PREREQUISITES.md, and enable the
 #  optional scanning jobs once you're happy with them (see the commented blocks below).〕
 
 name: CI
@@ -32,21 +32,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
         with:
-          node-version: 20 # 〔TODO: confirm (20 or 22 LTS)〕
-          cache: npm
-          cache-dependency-path: ${{ matrix.team }}/package-lock.json
+          dotnet-version: 8.0.x # 〔TODO: confirm (8.0 LTS)〕
 
-      - name: Install dependencies
-        run: npm ci || npm install
+      - name: Restore dependencies
+        run: dotnet restore
 
-      - name: Type-check & build
-        run: npm run build --if-present
+      - name: Build
+        run: dotnet build --no-restore --configuration Release
 
       - name: Unit tests
-        run: npm test --if-present
+        run: dotnet test --no-build --configuration Release
 
   # ---------------------------------------------------------------------------
   # STRETCH GOAL S1 — Security scanning. Uncomment / extend during the event.
@@ -68,7 +66,7 @@ jobs:
   #     - uses: actions/checkout@v4
   #     - uses: github/codeql-action/init@v3
   #       with:
-  #         languages: javascript-typescript
+  #         languages: csharp
   #     - uses: github/codeql-action/analyze@v3
   #
   # Secret scanning + push protection are enabled in the repo's

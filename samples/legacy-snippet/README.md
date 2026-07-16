@@ -18,7 +18,7 @@ years.
 2. **Characterisation test.** Before refactoring, write a test that captures the CURRENT output
    for a sample input (Copilot can help). This proves your refactor preserves behaviour.
 3. **Refactor with Copilot.** Aim for:
-   - TypeScript with explicit types,
+   - C# with explicit types,
    - small pure functions instead of one long mutating loop,
    - clear names, no magic numbers,
    - the same output for the same input.

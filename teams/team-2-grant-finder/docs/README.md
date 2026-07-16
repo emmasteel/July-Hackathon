@@ -17,28 +17,26 @@ be eligible for — with a clear explanation of **why** each grant matched or di
 
 ## What's already here (your starting point)
 
-A working, accessible React skeleton you will extend:
+A working, accessible Blazor WebAssembly skeleton you will extend:
 
 ```
 src/
-  lib/eligibility.ts        eligibility rules + validation — pure, unit-tested
-  components/GrantFinder.tsx accessible profile form + explained results
-  App.tsx
+  Core/Eligibility.cs        eligibility rules + validation — pure, unit-tested
+  Web/Components/GrantFinder.razor  accessible profile form + explained results
+  Web/Components/NumberField.razor  reusable accessible number input
+  Web/App.razor
 tests/
-  eligibility.test.ts       starter unit tests (extend in C4)
-  GrantFinder.test.tsx      starter component test
-  e2e/grant-finder.spec.ts  Playwright e2e + accessibility checks (C5 / S2)
+  EligibilityTests.cs        starter unit tests (extend in C4)
+  e2e/grant-finder.spec.ts   Playwright e2e + accessibility checks (C5 / S2)
 fixtures/
-  grants-sample-data.json   sample grants with eligibility rules
+  grants-sample-data.json    sample grants with eligibility rules
 ```
 
 Run it:
 
 ```bash
-npm install
-npm run dev        # open http://localhost:5174
-npm test           # unit tests
-npm run test:e2e   # end-to-end + accessibility (installs browsers first time)
+dotnet test                    # unit tests
+dotnet run --project src/Web   # open the printed http://localhost:5xxx URL
 ```
 
 ---
@@ -62,10 +60,10 @@ Then pick any stretch goals (S1–S5). The accessibility worksheet supports **S2
 
 ## Domain notes
 
-- **Eligibility rules** live in [`src/lib/eligibility.ts`](../src/lib/eligibility.ts). A grant can
+- **Eligibility rules** live in [`src/Core/Eligibility.cs`](../src/Core/Eligibility.cs). A grant can
   restrict by state, industry, max employees, max turnover, and minimum years trading. A
   missing rule means "no restriction".
-- **Transparency:** every result carries `reasonsFor` / `reasonsAgainst` — a match must always
+- **Transparency:** every result carries `ReasonsFor` / `ReasonsAgainst` — a match must always
   explain itself. Keep this principle as you extend the feature.
 - **Sample grants:** six in [`fixtures/grants-sample-data.json`](../fixtures/grants-sample-data.json),
   including broad and narrow eligibility so you can demo different outcomes.

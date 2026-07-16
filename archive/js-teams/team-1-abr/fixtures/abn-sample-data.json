@@ -1,0 +1,38 @@
+[
+  {
+    "abn": "51824753556",
+    "entityName": "Australian Taxation Office",
+    "entityType": "Commonwealth Government Entity",
+    "abnStatus": "Active",
+    "state": "ACT",
+    "postcode": "2600",
+    "gstRegistered": true
+  },
+  {
+    "abn": "83914571673",
+    "entityName": "Example Manufacturing Pty Ltd",
+    "entityType": "Australian Private Company",
+    "abnStatus": "Active",
+    "state": "VIC",
+    "postcode": "3000",
+    "gstRegistered": true
+  },
+  {
+    "abn": "53004085616",
+    "entityName": "Sample Retail Group Ltd",
+    "entityType": "Australian Public Company",
+    "abnStatus": "Active",
+    "state": "NSW",
+    "postcode": "2000",
+    "gstRegistered": true
+  },
+  {
+    "abn": "40000000026",
+    "entityName": "Dormant Holdings (Deregistered)",
+    "entityType": "Australian Private Company",
+    "abnStatus": "Cancelled",
+    "state": "QLD",
+    "postcode": "4000",
+    "gstRegistered": false
+  }
+]

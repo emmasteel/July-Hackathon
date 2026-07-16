@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Team1Abr.Core</RootNamespace>
+    <AssemblyName>Team1Abr.Core</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- The sample data fixture is embedded so the logic stays pure and testable:
+         no network, no file-system paths at runtime (works in the browser too). -->
+    <EmbeddedResource Include="..\..\fixtures\abn-sample-data.json">
+      <LogicalName>Team1Abr.Core.abn-sample-data.json</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,42 @@
+@*
+    Accessible number input with an associated label and error handling.
+    Two-way bindable via @bind-Value so the parent form stays in sync.
+*@
+
+<div class="field">
+    <label for="@Id">@Label</label>
+    <input id="@Id"
+           type="number"
+           min="0"
+           inputmode="numeric"
+           value="@Value"
+           @oninput="OnInput"
+           aria-invalid="@(Error is not null ? "true" : "false")"
+           aria-describedby="@(Error is not null ? ErrorId : null)" />
+    @if (Error is not null)
+    {
+        <p id="@ErrorId" class="error">@Error</p>
+    }
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public string Id { get; set; } = string.Empty;
+
+    [Parameter, EditorRequired]
+    public string Label { get; set; } = string.Empty;
+
+    [Parameter]
+    public string Value { get; set; } = string.Empty;
+
+    [Parameter]
+    public EventCallback<string> ValueChanged { get; set; }
+
+    [Parameter]
+    public string? Error { get; set; }
+
+    private string ErrorId => $"{Id}-error";
+
+    private Task OnInput(ChangeEventArgs args) =>
+        ValueChanged.InvokeAsync(args.Value?.ToString() ?? string.Empty);
+}

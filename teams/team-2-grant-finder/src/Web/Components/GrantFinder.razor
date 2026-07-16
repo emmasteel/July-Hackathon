@@ -1,0 +1,178 @@
+@using Team2GrantFinder.Core
+
+@*
+    Accessible grant eligibility checker.
+
+    Accessibility notes (WCAG 2.2 AA) addressed here:
+    - Every field has an associated, visible <label> (1.3.1 / 3.3.2).
+    - Errors are linked with aria-describedby, marked aria-invalid, and the error
+      summary uses role="alert" so it is announced (3.3.1 / 4.1.3).
+    - Results live in an aria-live region (4.1.3).
+    - Real <form>, <select>, <button> → full keyboard support (2.1.1).
+    - Each result explains WHY it matched (transparency + not colour-only, 1.4.1).
+
+    Residual risks to verify with the Playwright accessibility checks + a keyboard walkthrough:
+    colour contrast of the theme and focus-visible styling (see wwwroot/styles.css).
+*@
+
+<section aria-labelledby="finder-heading">
+    <h2 id="finder-heading">Check which grants you may be eligible for</h2>
+
+    <form @onsubmit="HandleSubmit" @onsubmit:preventDefault="true">
+        @if (_errors.Count > 0)
+        {
+            <div role="alert" class="error-summary">
+                <p>Please fix the following:</p>
+                <ul>
+                    @foreach (var message in _errors.Values)
+                    {
+                        <li>@message</li>
+                    }
+                </ul>
+            </div>
+        }
+
+        <div class="field">
+            <label for="field-state">State or territory</label>
+            <select id="field-state"
+                    @bind="_form.State"
+                    aria-invalid="@AriaInvalid("state")">
+                <option value="">Choose…</option>
+                @foreach (var state in Eligibility.States)
+                {
+                    <option value="@state">@state</option>
+                }
+            </select>
+        </div>
+
+        <div class="field">
+            <label for="field-industry">Industry</label>
+            <select id="field-industry"
+                    @bind="_form.Industry"
+                    aria-invalid="@AriaInvalid("industry")">
+                <option value="">Choose…</option>
+                @foreach (var industry in Eligibility.Industries)
+                {
+                    <option value="@industry">@industry</option>
+                }
+            </select>
+        </div>
+
+        <NumberField Id="field-employees"
+                     Label="Number of employees"
+                     @bind-Value="_form.Employees"
+                     Error="@GetError("employees")" />
+        <NumberField Id="field-turnover"
+                     Label="Annual turnover (AUD)"
+                     @bind-Value="_form.AnnualTurnover"
+                     Error="@GetError("annualTurnover")" />
+        <NumberField Id="field-years"
+                     Label="Years trading"
+                     @bind-Value="_form.YearsTrading"
+                     Error="@GetError("yearsTrading")" />
+
+        <button type="submit">Find grants</button>
+    </form>
+
+    <div aria-live="polite" class="results">
+        @if (_results is not null)
+        {
+            var eligibleCount = _results.Count(r => r.Eligible);
+            <h3>@eligibleCount of @_results.Count grants match your business</h3>
+            <ul class="grant-list">
+                @foreach (var result in _results)
+                {
+                    <li>
+                        <article class="@(result.Eligible ? "grant-card grant-card--eligible" : "grant-card grant-card--ineligible")">
+                            <h4>@result.Grant.Name</h4>
+                            @* Status conveyed by text, not colour alone (WCAG 1.4.1). *@
+                            <p class="grant-status">
+                                @(result.Eligible ? "Likely eligible" : "Not eligible") — @result.Grant.Description
+                            </p>
+                            <p>
+                                <strong>Amount:</strong> $@Eligibility.FormatMoney(result.Grant.Amount)
+                            </p>
+                            @if (result.ReasonsFor.Count > 0)
+                            {
+                                <div>
+                                    <p class="reasons-heading">Why it matches:</p>
+                                    <ul>
+                                        @foreach (var reason in result.ReasonsFor)
+                                        {
+                                            <li>@reason</li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                            @if (result.ReasonsAgainst.Count > 0)
+                            {
+                                <div>
+                                    <p class="reasons-heading">Why it doesn't match:</p>
+                                    <ul>
+                                        @foreach (var reason in result.ReasonsAgainst)
+                                        {
+                                            <li>@reason</li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                        </article>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</section>
+
+@code {
+    private sealed class FormValues
+    {
+        public string State { get; set; } = string.Empty;
+        public string Industry { get; set; } = string.Empty;
+        public string Employees { get; set; } = string.Empty;
+        public string AnnualTurnover { get; set; } = string.Empty;
+        public string YearsTrading { get; set; } = string.Empty;
+    }
+
+    private readonly FormValues _form = new();
+    private Dictionary<string, string> _errors = new();
+    private IReadOnlyList<EligibilityResult>? _results;
+
+    private string AriaInvalid(string field) => _errors.ContainsKey(field) ? "true" : "false";
+
+    private string? GetError(string field) => _errors.TryGetValue(field, out var message) ? message : null;
+
+    private void HandleSubmit()
+    {
+        // Security: parse and validate untrusted input at the boundary.
+        var draft = new ProfileDraft(
+            State: Enum.TryParse<State>(_form.State, out var state) ? state : null,
+            Industry: Enum.TryParse<Industry>(_form.Industry, out var industry) ? industry : null,
+            Employees: TryParseInt(_form.Employees),
+            AnnualTurnover: TryParseDecimal(_form.AnnualTurnover),
+            YearsTrading: TryParseInt(_form.YearsTrading));
+
+        var validation = Eligibility.ValidateProfile(draft);
+        if (!validation.Valid)
+        {
+            _errors = new Dictionary<string, string>(validation.Errors);
+            _results = null;
+            return;
+        }
+
+        _errors = new Dictionary<string, string>();
+        var profile = new BusinessProfile(
+            draft.State!.Value,
+            draft.Industry!.Value,
+            draft.Employees!.Value,
+            draft.AnnualTurnover!.Value,
+            draft.YearsTrading!.Value);
+        _results = Eligibility.FindGrants(profile);
+    }
+
+    private static int? TryParseInt(string value) =>
+        int.TryParse(value, out var parsed) ? parsed : null;
+
+    private static decimal? TryParseDecimal(string value) =>
+        decimal.TryParse(value, out var parsed) ? parsed : null;
+}

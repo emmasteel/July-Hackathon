@@ -30,7 +30,7 @@ fix(a11y): add visible focus outline to lookup button
 
 - Populate every 〔bracketed〕 TODO before sharing widely (see the "Organiser TODO" list the
   scaffolding produced, and search the repo for `〔` / `TODO`).
-- Keep starter apps runnable: `npm install && npm run verify` must pass in each team track.
+- Keep starter apps runnable: `dotnet test` must pass in each team track.
 - Prefer editing existing files over adding new ones; keep the structure in the
   [README](README.md) map accurate.
 - Don't introduce secrets or environment-specific config. Use `.env.example` placeholders.

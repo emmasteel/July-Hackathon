@@ -37,7 +37,7 @@ least one reusable prompt file, and make Copilot aware of your conventions.
 **Do:** Use Copilot to build the core feature described by your spec.
 
 **Definition of done**
-- [ ] The feature runs locally (`npm run dev`) and does something useful for a user.
+- [ ] The feature runs locally (`dotnet run --project src/Web`) and does something useful for a user.
 - [ ] It implements the acceptance criteria for at least one story.
 - [ ] You reviewed and corrected Copilot output rather than accepting blindly.
 
@@ -45,7 +45,7 @@ least one reusable prompt file, and make Copilot aware of your conventions.
 **Do:** Use Copilot to generate, review, and strengthen unit tests.
 
 **Definition of done**
-- [ ] Unit tests exist for the core logic and pass (`npm test`).
+- [ ] Unit tests exist for the core logic and pass (`dotnet test`).
 - [ ] Tests include at least one **edge case** you added after reviewing Copilot's first pass.
 - [ ] You can name one weak test Copilot produced and how you improved it.
 

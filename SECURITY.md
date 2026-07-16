@@ -13,8 +13,8 @@ This repository is **public** and used for a hands-on hackathon. Treat it accord
 3. **Do not hit live government sites in automated tests.** Team 1's use case references the
    Australian Business Register, but tests must use the **static fixtures** provided in
    `teams/team-1-abr/fixtures/`. No scraping, no load, no live calls.
-4. **Dependency hygiene.** Prefer well-maintained packages. Run `npm audit` and review the
-   dependency review check before adding new packages.
+4. **Dependency hygiene.** Prefer well-maintained packages. Run `dotnet list package --vulnerable`
+   and review the dependency review check before adding new packages.
 
 ## If you accidentally commit a secret
 

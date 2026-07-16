@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Team2GrantFinder.Core</RootNamespace>
+    <AssemblyName>Team2GrantFinder.Core</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- The sample grants fixture is embedded so the logic stays pure and testable:
+         no network, no file-system paths at runtime (works in the browser too). -->
+    <EmbeddedResource Include="..\..\fixtures\grants-sample-data.json">
+      <LogicalName>Team2GrantFinder.Core.grants-sample-data.json</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

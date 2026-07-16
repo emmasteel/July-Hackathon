@@ -1,0 +1,120 @@
+@using Team1Abr.Core
+
+@*
+    Accessible ABN lookup.
+
+    Accessibility notes (WCAG 2.2 AA) addressed here:
+    - The input has an associated, visible <label> (1.3.1 / 3.3.2).
+    - Errors use role="alert" and aria-describedby so they are announced (4.1.3 / 3.3.1).
+    - Results are placed in an aria-live region so screen readers hear the update (4.1.3).
+    - Real <form> and <button> elements → full keyboard support (2.1.1).
+    - aria-invalid is toggled on the field when there's an error (4.1.2).
+
+    Residual risks to verify with the Playwright accessibility checks + a keyboard walkthrough:
+    colour contrast of the theme, and focus-visible styling (see wwwroot/styles.css).
+*@
+
+<section aria-labelledby="lookup-heading">
+    <h2 id="lookup-heading">Look up an ABN</h2>
+
+    <form @onsubmit="HandleSubmit" @onsubmit:preventDefault="true">
+        <div class="field">
+            <label for="abn-input">Australian Business Number (ABN)</label>
+            <p id="abn-hint" class="hint">
+                Enter the 11-digit ABN. Spaces are allowed.
+            </p>
+            <input id="abn-input"
+                   name="abn"
+                   type="text"
+                   inputmode="numeric"
+                   autocomplete="off"
+                   value="@_abnInput"
+                   @oninput="OnInput"
+                   aria-describedby="@(HasError ? "abn-hint abn-error" : "abn-hint")"
+                   aria-invalid="@(HasError ? "true" : "false")" />
+        </div>
+
+        @if (HasError)
+        {
+            <p id="abn-error" role="alert" class="error">@_errorMessage</p>
+        }
+
+        <button type="submit">Search</button>
+    </form>
+
+    <div aria-live="polite" class="results">
+        @if (_state == LookupStatus.Found && _record is not null)
+        {
+            <article class="result-card" aria-label="Search result">
+                <h3>@_record.EntityName</h3>
+                <dl>
+                    <dt>ABN</dt>
+                    <dd>@Abn.Format(_record.Abn)</dd>
+                    <dt>Status</dt>
+                    @* Status is conveyed by text, not colour alone (WCAG 1.4.1). *@
+                    <dd>
+                        <span class="@(_record.AbnStatus == "Active" ? "status status--active" : "status status--cancelled")">
+                            @_record.AbnStatus
+                        </span>
+                    </dd>
+                    <dt>Entity type</dt>
+                    <dd>@_record.EntityType</dd>
+                    <dt>Location</dt>
+                    <dd>@_record.State @_record.Postcode</dd>
+                    <dt>GST registered</dt>
+                    <dd>@(_record.GstRegistered ? "Yes" : "No")</dd>
+                </dl>
+            </article>
+        }
+        @if (_state == LookupStatus.NotFound)
+        {
+            <p>
+                No business found for ABN <strong>@_notFoundAbn</strong> in the sample
+                data.
+            </p>
+        }
+    </div>
+</section>
+
+@code {
+    private enum LookupStatus
+    {
+        Idle,
+        Error,
+        NotFound,
+        Found,
+    }
+
+    private string _abnInput = string.Empty;
+    private LookupStatus _state = LookupStatus.Idle;
+    private string _errorMessage = string.Empty;
+    private string _notFoundAbn = string.Empty;
+    private BusinessRecord? _record;
+
+    private bool HasError => _state == LookupStatus.Error;
+
+    private void OnInput(ChangeEventArgs args) => _abnInput = args.Value?.ToString() ?? string.Empty;
+
+    private void HandleSubmit()
+    {
+        // Security: validate untrusted input at the boundary before using it.
+        var result = Abn.Validate(_abnInput);
+        if (!result.Valid)
+        {
+            _state = LookupStatus.Error;
+            _errorMessage = result.Reason;
+            return;
+        }
+
+        var record = Lookup.LookupAbn(result.Normalised);
+        if (record is null)
+        {
+            _state = LookupStatus.NotFound;
+            _notFoundAbn = Abn.Format(result.Normalised);
+            return;
+        }
+
+        _record = record;
+        _state = LookupStatus.Found;
+    }
+}
