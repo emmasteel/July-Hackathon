@@ -121,6 +121,10 @@ mark, .hl {
   background: linear-gradient(transparent 55%, var(--hl) 55%);
   padding: 0 0.1em;
 }
+/* Phase-coloured highlighter variants (same style as <mark>, different colour) */
+.mark--explore { --hl: var(--explore); }
+.mark--create  { --hl: var(--create); }
+.mark--survive { --hl: var(--survive); }
 
 /* ---- Pixel label (monospace uppercase) ---- */
 .pixel {
