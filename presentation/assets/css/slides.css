@@ -171,6 +171,18 @@ mark, .hl {
 .figure-row > .callout {
   margin: 0;
 }
+.figure-row > .hero-img {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+}
+.qr-figure {
+  text-align: center;
+}
+.qr-figure figcaption {
+  margin-top: 0.5rem;
+}
 @media (max-width: 640px) {
   .figure-row { flex-direction: column; }
   .figure-aside { width: clamp(160px, 45vw, 240px); }
