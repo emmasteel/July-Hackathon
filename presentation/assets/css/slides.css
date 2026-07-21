@@ -130,6 +130,22 @@ mark, .hl {
   color: var(--accent);
 }
 
+/* ---- Pixel icon beside a label (large, visible from the back of the room) ---- */
+.pixel-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.pixel-icon {
+  image-rendering: pixelated; /* keeps the pixel-art edges crisp when scaled up */
+  width: clamp(120px, 18vw, 220px);
+  height: auto;
+  flex-shrink: 0;
+}
+.pixel-row .pixel {
+  margin: 0;
+}
+
 /* ---- Call-out / quote block ---- */
 .callout {
   border-left: 6px solid var(--accent);
