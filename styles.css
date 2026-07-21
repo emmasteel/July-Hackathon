@@ -167,23 +167,12 @@ section > p.section-intro {
   max-width: 48rem;
 }
 
-/* Icon-plus-label link to the slide deck. alt="" on the image is intentional:
-   the adjacent text carries the meaning, so screen readers don't announce it twice. */
-.present-cta {
-  margin: 1.25rem 0 0;
-}
-.present-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-weight: 600;
-  text-decoration: none;
-}
-.present-link img {
+/* Pixel-art icon inside a card. alt="" on the image is intentional: the card
+   heading carries the meaning, so screen readers don't announce it twice. */
+.card-icon {
   image-rendering: pixelated; /* keeps the pixel-art edges crisp when scaled */
-}
-.present-link:hover span {
-  text-decoration: underline;
+  margin: 0 0 0.6rem;
+  align-self: flex-start;
 }
 
 /* Card grids */
