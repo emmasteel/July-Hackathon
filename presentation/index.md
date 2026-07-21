@@ -27,5 +27,4 @@ next: "01-start"
   <li><a href="{{ '/12-prompting-well.html' | relative_url }}"><span class="n">11</span><span>Prompting well — prompt, review, refine</span></a></li>
   <li><a href="{{ '/13-token-aware.html' | relative_url }}"><span class="n">12</span><span>Work token-aware</span></a></li>
   <li><a href="{{ '/14-close.html' | relative_url }}"><span class="n">13</span><span>The process outlasts the tools</span></a></li>
-  <li><a href="{{ '/15-cheatsheet.html' | relative_url }}"><span class="n">＋</span><span>Cheatsheet — take it into the hack</span></a></li>
 </ol>
