@@ -1,0 +1,23 @@
+# Standalone GitHub Pages config for the hackathon presentation deck.
+# Drop this folder into a repo (or point Pages at it) and enable
+# Settings -> Pages -> Deploy from a branch.
+
+title: "Coding practices in a world with AI"
+description: "The opening talk for the GitHub Copilot Hackathon — how AI changes the way we write, review, and ship code."
+lang: en-AU
+
+# If this deck is served from a project subpath (e.g. user.github.io/July-Hackathon),
+# set baseurl to that path so assets resolve. Leave blank for a root/user site.
+baseurl: ""
+url: ""
+
+# Slides use the custom retro layout in _layouts/slide.html.
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: slide
+
+# Keep the numbered slide files in reading order; exclude scaffolding from output.
+exclude:
+  - README.md
