@@ -150,6 +150,32 @@ mark, .hl {
   margin: 0;
 }
 
+/* ---- Figure sitting beside body content (image left, text right) ---- */
+.figure-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.figure-aside {
+  flex: 0 0 auto;
+  width: clamp(160px, 22vw, 300px);
+  margin: 0.25rem 0 0;
+}
+.figure-aside img {
+  width: 100%;
+  height: auto;
+}
+.figure-row > ul {
+  margin-top: 0;
+}
+.figure-row > .callout {
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .figure-row { flex-direction: column; }
+  .figure-aside { width: clamp(160px, 45vw, 240px); }
+}
+
 /* ---- Call-out / quote block ---- */
 .callout {
   border-left: 6px solid var(--accent);
@@ -252,6 +278,8 @@ figcaption { color: var(--muted); font-size: 0.95rem; text-align: center; }
 }
 .slide-nav a:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 .nav-home { font-family: var(--pixel); font-size: 0.6rem; }
+.nav-next { font-family: var(--pixel); font-size: 0.6rem; }
+.nav-prev { font-family: var(--pixel); font-size: 0.6rem; }
 .foot-meta {
   display: flex;
   justify-content: space-between;
