@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teach Copilot your project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/slides.css" />
+  </head>
+  <body class="accent-create">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="phasebar" aria-hidden="true"></div>
+    <main id="main" class="slide">
+      <p class="eyebrow">Create · set the ground rules</p>
+<h1>Teach Copilot your project</h1>
+<p><code>copilot-instructions.md</code> is the always-on context Copilot reads on <em>every</em> request. Write your team's standing rules once, and you stop repeating them in every prompt. This is your <strong>C1</strong>.</p>
+<h2>Tailoring it for a FedGov project team</h2>
+<p>Public-sector work carries rules Copilot can't infer from the code. Make them explicit:</p>
+<table><thead><tr><th>Area</th><th>Rules worth encoding</th></tr></thead><tbody><tr><td><strong>Accessibility</strong></td><td>WCAG 2.2 AA is non-negotiable. Semantic HTML, keyboard-first, visible focus, AA contrast, alt text.</td></tr><tr><td><strong>Security & privacy</strong></td><td>No secrets, credentials, or PII in code, prompts, or commits. Validate and sanitise all input. Treat all data as public sample data.</td></tr><tr><td><strong>Data handling</strong></td><td>Never call live government services. Use local fixtures only.</td></tr><tr><td><strong>Standards</strong></td><td>Your stack and conventions (e.g. .NET / Blazor), naming, and the testing you expect.</td></tr><tr><td><strong>"Do not" rules</strong></td><td>Don't add dependencies without approval. Don't touch build output. Don't invent government data.</td></tr></tbody></table>
+<div class="callout tinted">
+Keep it <mark>lean</mark>. Every line is re-sent on every request — it's high-cost configuration, not documentation. Standards the model can't infer, explicit "do not" rules, one line of tech-stack context. Link to full style guides rather than pasting them.
+</div>
+<p class="pixel">Team 1: add ABR rules — "an ABN is 11 digits; never call the live ABR."</p>
+    </main>
+    <footer class="slide-footer">
+      <nav class="slide-nav" aria-label="Slide navigation">
+        <a class="nav-prev" href="08-specify.html">&larr; Back</a>
+        <a class="nav-home" href="index.html">Contents</a>
+        <a class="nav-next" href="10-plan-implement.html">Next &rarr;</a>
+      </nav>
+      <p class="foot-meta">
+        <span class="foot-title">Coding practices in a world with AI</span>
+        <span class="foot-num">8</span>
+      </p>
+    </footer>
+  </body>
+</html>
